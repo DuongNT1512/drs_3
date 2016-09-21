@@ -11,6 +11,12 @@ gem "jbuilder", "2.4.1"
 gem "bootstrap-sass", "3.3.6"
 gem "devise"
 gem "devise-bootstrapped", "0.1.1"
+gem "pundit"
+gem "will_paginate", "3.1.0"
+gem "bootstrap-will_paginate", "0.0.10"
+gem "bootstrap3-datetimepicker-rails"
+gem "momentjs-rails"
+gem "simple_form"
 
 group :development, :test do
   gem "mysql2"

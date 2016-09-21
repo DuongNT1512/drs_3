@@ -59,14 +59,15 @@ ActiveRecord::Schema.define(version: 20160921004751) do
 
   create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.string   "kind"
+    t.integer  "kind"
     t.string   "reason"
-    t.datetime "compensation_time"
+    t.datetime "compensation_time_from"
+    t.datetime "compensation_time_to"
     t.datetime "date_leave_from"
     t.datetime "date_leave_to"
-    t.boolean  "approved"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "approved",               default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["user_id"], name: "index_requests_on_user_id", using: :btree
   end
 

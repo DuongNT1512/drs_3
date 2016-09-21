@@ -5,3 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admin = User.create username: "admin",
+  email: "admin@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: 1
+Position.create! name: "Manager"
+Position.create! name: "Employee"
+Position.create! name: "Practice"
+
+Division.create! name: "Laboratory"
+Division.create! name: "KeangNam"
+
+Progress.create! name: "Read Tutorial"
+Progress.create! name: "Project 1"
+Progress.create! name: "Project 2"
+
+Language.create! name: "Ruby"
+
+User.create! username: "duong",
+  email: "1@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  division_id: "1",
+  position_id: "1"
+
+Request.create! user_id: "2",
+  kind: "il",
+  reason: "Busy",
+  compensation_time_from: Time.zone.now + 10.seconds,
+  compensation_time_to: Time.zone.now + 30.seconds,
+  date_leave_from: Time.zone.now + 5.seconds,
+  date_leave_to: Time.zone.now,
+  approved: "approved"
