@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920103931) do
+ActiveRecord::Schema.define(version: 20160921004751) do
 
   create_table "divisions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20160920103931) do
 
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "working_day"
-    t.string   "integer"
     t.integer  "user_id"
     t.integer  "languages_id"
     t.integer  "progress_id"
@@ -73,16 +72,26 @@ ActiveRecord::Schema.define(version: 20160920103931) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
-    t.string   "password"
     t.string   "skill"
-    t.boolean  "is_admin"
-    t.boolean  "is_manager"
+    t.integer  "role"
     t.integer  "position_id"
     t.integer  "division_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.index ["division_id"], name: "index_users_on_division_id", using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["position_id"], name: "index_users_on_position_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "positions", "divisions"

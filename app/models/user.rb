@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :position
-  belongs_to :division
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
 
   has_many :report, dependent: :destroy
   has_many :request, dependent: :destroy
