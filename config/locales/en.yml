@@ -3,9 +3,11 @@ en:
   edit: "Edit"
   signup: "Sign up"
   error: "Error %{error_count} errors"
+
   home:
     signup: "Sign up Now"
     init: "Static pages home"
+
   header:
     home: "Home"
     login: "Login"
@@ -14,15 +16,19 @@ en:
     users: "All users"
     report: "Report"
     request: "Request"
+
   footer:
     page_name: "Daily report system"
+
   signup_page:
     password: "Password"
     confirmation: "Confirmation"
     minimum: "characters minimum"
+
   session:
     email_address: "Email Address"
     password: "Password"
+
   request:
     create_success: "Create success"
     new_request: "New Request"

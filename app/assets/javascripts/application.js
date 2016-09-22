@@ -19,6 +19,6 @@
 //= require_tree .
 $(document).on('turbolinks:load', function(){
   $('.datepicker').datetimepicker({
-    format: "h : m DD/MM/YYYY "
+    format: "h : m DD / MM / YYYY "
   });
 });
