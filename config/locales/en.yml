@@ -2,9 +2,12 @@ en:
   login: Log in
   edit: "Edit"
   signup: "Sign up"
+  error: "Error %{error_count} errors"
+
   home:
     signup: "Sign up Now"
     init: "Static pages home"
+
   header:
     home: "Home"
     login: "Login"
@@ -13,12 +16,43 @@ en:
     users: "All users"
     report: "Report"
     request: "Request"
+
   footer:
     page_name: "Daily report system"
+
   signup_page:
     password: "Password"
     confirmation: "Confirmation"
     minimum: "characters minimum"
+
   session:
     email_address: "Email Address"
     password: "Password"
+
+  request:
+    create_success: "Create success"
+    new_request: "New Request"
+    all_request: "All Request"
+    stt: "STT"
+    submit: "Request"
+    edit_request: "Edit request"
+    update: "Update"
+    compensation_time_to: "Compensation Time To"
+    compensation_time_from: "Compensation Time From"
+    date_leave_to: "Leave to"
+    date_leave_from: "Leave from"
+    kind: "Kind"
+    reason: "Reason"
+    status: "Status"
+    update_success: "Update success"
+    update_fail: "Update fail"
+    delete_fail: "Delete fail"
+    time_fail: "Time fail"
+    delete: "Delete"
+    edit: "Edit"
+
+  time:
+    formats:
+      default: "%Y-%m-%d %r"
+      time_format: "%H:%M:%S"
+      long:  "%B %d, %Y at %r"
