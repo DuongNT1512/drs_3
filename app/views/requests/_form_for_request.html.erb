@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for @request do |f| %>
+
+      <%= render "shared/error_messages", object: @request %>
+
+      <div class="form-group">
+        <%= f.label :request_kind %>
+        <%= f.select :request_kind, options_for_select(@kind, @request.kind),
+          class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :date_leave_from %>
+        <%= f.text_field :date_leave_from, class: "form-control datepicker" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :date_leave_to %>
+        <%= f.text_field :date_leave_to, class: "form-control datepicker" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :compensation_time_from %>
+        <%= f.text_field :compensation_time_from, class: "form-control datepicker" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :compensation_time_to %>
+        <%= f.text_field :compensation_time_to, class: "form-control datepicker" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :reason %>
+        <%= f.text_field :reason, class: "form-control" %>
+      </div>
+
+      <%= f.submit t("request.submit"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -17,6 +17,7 @@ gem "bootstrap-will_paginate"
 gem "bootstrap3-datetimepicker-rails"
 gem "momentjs-rails"
 gem "simple_form"
+gem "config"
 
 group :development, :test do
   gem "mysql2"

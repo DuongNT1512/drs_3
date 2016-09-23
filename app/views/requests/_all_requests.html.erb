@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <th><%= t "request.stt" %></th>
+    <th><%= t "request.kind" %></th>
+    <th><%= t "request.leave_from" %></th>
+    <th><%= t "request.leave_to" %></th>
+    <th><%= t "request.compensation_time_from" %></th>
+    <th><%= t "request.compensation_time_to" %></th>
+    <th><%= t "request.reason" %></th>
+    <th><%= t "request.status" %></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @requests.each.with_index 1 do |request, index| %>
+      <label>
+        <tr>
+          <td><%= index %></td>
+          <td><%= request.kind %></td>
+          <td><%= l request.date_leave_from, format: :default %></td>
+          <td><%= l request.date_leave_to, format: :default %></td>
+          <td><%= l request.compensation_time_from, format: :default %></td>
+          <td><%= l request.compensation_time_to, format: :default %></td>
+          <td><%= request.reason %></td>
+          <td><%= request.approved %></td>
+          <% unless request.approved? %>
+            <td>
+             <%= link_to t("request.edit"), edit_request_path(request) %> /
+             <%= link_to t("request.delete"), request_path(request), method: :delete %>
+           </td>
+          <% end %>
+        </tr>
+      </label>
+    <% end %>
+  </tbody>
+</table>
