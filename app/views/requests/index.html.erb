@@ -1,0 +1,11 @@
+<% provide :title, t("request.all_request") %>
+<div class="dn-font-group">
+  <h1 class="text-center"><%= t("request.all_request") %></h1>
+  <div class="panel-body">
+      <%= link_to t("request.new_request"), new_request_path, class: "btn btn-primary" %>
+    <div>
+      <%= render "all_requests" %>
+    </div>
+  </div>
+  <%= will_paginate %>
+</div>
