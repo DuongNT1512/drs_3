@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "users#index"
     resources :users, only: [:index, :show, :destroy]
+    resources :requests, except: [:new, :create]
   end
   root "requests#index"
 end

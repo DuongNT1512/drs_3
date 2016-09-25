@@ -22,11 +22,12 @@
           <td><%= l request.compensation_time_to, format: :default %></td>
           <td><%= request.reason %></td>
           <td><%= request.approved %></td>
-          <% unless request.approved? %>
+          <% if request.init? %>
             <td>
-             <%= link_to t("request.edit"), edit_request_path(request) %> /
-             <%= link_to t("request.delete"), request_path(request), method: :delete %>
-           </td>
+              <%= link_to t("request.edit"), edit_request_path(request) %> /
+              <%= link_to t("request.delete"), request_path(request),
+                data:{confirm: t("sure") }, method: :delete %>
+            </td>
           <% end %>
         </tr>
       </label>
