@@ -4,3 +4,8 @@ model:
   - Position
   - Division
   - Language
+namemodel:
+  - Division
+  - Progress
+  - Language
+

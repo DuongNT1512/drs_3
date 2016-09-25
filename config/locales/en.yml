@@ -57,6 +57,19 @@ en:
     approve: "Approve"
     action: "Action"
 
+  report:
+    progess: "Progess"
+    working_day: "Working day"
+    languages: "Language"
+    date: "Report Date"
+    location: "Location"
+    achievement: "Achievement"
+    action: "Action"
+    new: "New Report"
+    all: "All Report"
+    submit: "Send to manager"
+    edit: "Edit report"
+
   time:
     formats:
       default: "%Y-%m-%d %r"
@@ -71,6 +84,7 @@ en:
     division: "Division"
     position: "Position"
     language: "Language"
+
   user:
     username: "User name"
     email: "Email"
@@ -90,3 +104,7 @@ en:
     position: "Select posision"
     division: "Select division"
     language: "Select language"
+    approve: "Select Approved"
+    progress: "Select Progress"
+    not_request: "Can't find request"
+    not_report: "Can't find report"
