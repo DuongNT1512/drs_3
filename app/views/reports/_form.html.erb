@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @report do |f| %>
+
+      <%= render "shared/error_messages", object: @report %>
+
+      <div class="form-group">
+        <%= f.label :working_day %>
+        <%= f.select :working_day, options_for_select(@working_day),
+          class: "form-control" %>
+      </div>
+
+      <p><%= t "report.position" %>:
+        <%= f.collection_select :division_id, @divisions, :id, :name,
+          {prompt: t("select.position")}, class: "form-control" %>
+      </p><br/>
+
+      <p><%= t "report.language" %>:
+        <%= f.collection_select :language_id, @languages, :id, :name,
+          {prompt: t("select.language")}, class: "form-control" %>
+      </p><br/>
+
+      <p><%= t "report.progress" %>:
+        <%= f.collection_select :progress_id, @progresss, :id, :name,
+          {prompt: t("select.progress")}, class: "form-control" %>
+      </p><br/>
+
+      <p><%= t "report.achievement" %>:
+        <%= f.text_field :achievement, placeholder: t("report.achievement"),
+          class: "form-control"%>
+      </p><br/>
+
+      <%= f.submit t("report.submit"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

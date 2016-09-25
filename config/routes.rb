@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :requests
+  resources :requests, except: :show
+  resources :reports
 
   namespace :admin do
-    root "users#index"
+    root "reports#index"
     resources :users, except: [:new, :create]
     resources :requests, except: [:new, :create]
+    resources :reports, only: :index
     resources :positions
     resources :divisions
   end
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     root "requests#index"
     resources :users, except: [:new, :create]
     resources :requests, except: [:new, :create]
+    resources :reports, only: :index
   end
   root "requests#index"
 end

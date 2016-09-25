@@ -64,7 +64,7 @@ class RequestsController < ApplicationController
   def find_request
     @request = current_user.requests.find_by_id params[:id]
     if @request.nil?
-      flash[:danger] = t "notice.not_lesson"
+      flash[:danger] = t "notification.not_request"
       redirect_to requests_path
     end
   end

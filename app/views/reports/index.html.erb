@@ -1,0 +1,11 @@
+<% provide :title, t("report.all") %>
+<div class="dn-font-group">
+  <h1 class="text-center"><%= t "report.all" %></h1>
+  <div class="panel-body">
+    <%= link_to t("report.new"), new_report_path, class: "btn btn-primary" %>
+    <div>
+      <%= render "all_reports" %>
+    </div>
+    <%= will_paginate @reports %>
+  </div>
+</div>

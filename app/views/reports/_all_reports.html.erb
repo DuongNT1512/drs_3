@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <th>#</th>
+    <th><%= t "report.location" %></th>
+    <th><%= t "report.date" %></th>
+    <th><%= t "report.language" %></th>
+    <th><%= t "report.working_day" %></th>
+    <th><%= t "report.progess" %></th>
+    <th><%= t "report.achievement" %></th>
+  </thead>
+  <tbody>
+    <% @reports.each.with_index do |report, index| %>
+      <tr>
+        <td><%= index_for_pages index, params[:page] %>
+        </td>
+        <td><%= report.user.position_name %></td>
+        <td><%= l report.created_at, format: :default %></td>
+        <td><%= report.language_name %></td>
+        <td><%= report.working_day %></td>
+        <td><%= report.progress_name %></td>
+        <td><%= report.achievement %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
