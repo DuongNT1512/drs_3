@@ -1,8 +1,10 @@
 en:
-  login: Log in
+  login: "Log in"
+  logout: "Logout"
   edit: "Edit"
   signup: "Sign up"
   error: "Error %{error_count} errors"
+  sure: "Are you sure?"
 
   home:
     signup: "Sign up Now"
@@ -56,3 +58,22 @@ en:
       default: "%Y-%m-%d %r"
       time_format: "%H:%M:%S"
       long:  "%B %d, %Y at %r"
+
+  side_bar:
+    dash_board: "Dash board"
+    user: "Users"
+    report: "Report"
+    request: "Request"
+    division: "Division"
+    position: "Position"
+    language: "Language"
+  user:
+    username: "User name"
+    email: "Email"
+    division: "Division"
+    position: "Position"
+    language: "Language"
+
+  notification:
+    not_admin: "You are not authorized to perform this action."
+    login: "Please login"

@@ -10,7 +10,7 @@ admin = User.create username: "admin",
   email: "admin@gmail.com",
   password: "123456",
   password_confirmation: "123456",
-  role: 1
+  role: 0
 Position.create! name: "Manager"
 Position.create! name: "Employee"
 Position.create! name: "Practice"
