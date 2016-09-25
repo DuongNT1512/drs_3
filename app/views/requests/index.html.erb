@@ -2,7 +2,10 @@
 <div class="dn-font-group">
   <h1 class="text-center"><%= t("request.all_request") %></h1>
   <div class="panel-body">
-      <%= link_to t("request.new_request"), new_request_path, class: "btn btn-primary" %>
+    <% if policy(request).new? %>
+      <%= link_to t("request.new_request"), new_request_path,
+        class: "btn btn-primary" %>
+    <% end %>
     <div>
       <%= render "all_requests" %>
     </div>

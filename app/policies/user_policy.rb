@@ -16,8 +16,48 @@ class UserPolicy < ApplicationPolicy
       end
     end
   end
+  def initialize user, scope
+    @user = user
+    @scope = scope
+  end
 
   def index?
-    current_user.admin?
+    verify_admin || verify_manager
+  end
+
+  def show?
+    verify_admin
+  end
+
+  def edit?
+    if @user.admin?
+      [:role]
+    elsif @user.manager?
+      [:division]
+    elsif user_is_owner_of_record?
+      [:request_kind, :date_leave_from, :date_leave_to,
+        :compensation_time_from, :compensation_time_to, :reason]
+    end
+  end
+
+  def new?
+    !verify_manager || !verify_admin
+  end
+
+  def update?
+    @user.employee?
+  end
+
+  def create?
+    @user.employee?
+  end
+
+  private
+  def verify_admin
+    @user.admin?
+  end
+
+  def verify_manager
+    @user.manager?
   end
 end

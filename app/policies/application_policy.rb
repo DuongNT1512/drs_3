@@ -4,11 +4,11 @@ class ApplicationPolicy
   def initialize current_user, model
     raise Pundit::NotAuthorizedError, I18n.t("notification.login") unless current_user
     @current_user = current_user
-    @record = model
+    @model = model
   end
 
   def index
-    @current_user.admin?
+
   end
 
   def show
@@ -16,7 +16,7 @@ class ApplicationPolicy
   end
 
   def create
-    false
+    true
   end
 
   def new
@@ -32,18 +32,18 @@ class ApplicationPolicy
   end
 
   def destroy
-    false
+    true
   end
 
   def scope
-    Pundit.policy_scope! user, model.class
+    Pundit.policy_scope! current_user, model.class
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :current_user, :scope
 
-    def initialize user, scope
-      @user = user
+    def initialize current_user, scope
+      @current_user = current_user
       @scope = scope
     end
 

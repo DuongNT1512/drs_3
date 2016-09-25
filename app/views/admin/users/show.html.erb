@@ -1,0 +1,30 @@
+<% provide :title, @user.username %>
+<div class="row">
+  <div class="col-md-6 well col-md-offset-2">
+    <%= form_for [:admin, @user], remote: true do |f| %>
+      <p ><%= t "user.username" %>:
+        <span id="p-name">
+          <%= @user.username %>
+        </span>
+      </p><br/>
+
+      <p><%= t "user.position" %>:
+        <span id="p-position">
+          <%= @user.user_position %>
+        </span>
+      </p><br/>
+
+      <p><%= t "user.division" %>:
+        <span id="p-division">
+          <%= @user.user_division %>
+        </span>
+      </p><br/>
+    <% end %>
+
+    <%= link_to t("button.edit"), edit_admin_user_path(@user),
+      class: "btn btn-primary" %>
+    <%= link_to t("button.delete"), admin_user_path(@user), method: :delete,
+      data: {confirm: t(:sure)},
+      class: "btn btn-danger dn-user-delete" unless @user.admin? %>
+  </div>
+</div>

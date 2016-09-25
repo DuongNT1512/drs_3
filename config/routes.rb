@@ -2,9 +2,17 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :requests
+  resources :users
+
   namespace :admin do
+    root "reports#index"
+    resources :users, except: [:new, :create]
+    resources :requests, except: [:new, :create]
+  end
+
+  namespace :manager do
     root "users#index"
-    resources :users, only: [:index, :show, :destroy]
+    resources :users, except: [:new, :create]
     resources :requests, except: [:new, :create]
   end
   root "requests#index"

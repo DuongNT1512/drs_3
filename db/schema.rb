@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160921004751) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username"
     t.string   "skill"
-    t.integer  "role"
+    t.integer  "role",                   default: 2
     t.integer  "position_id"
     t.integer  "division_id"
     t.datetime "created_at",                          null: false

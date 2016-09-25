@@ -1,0 +1,22 @@
+<% provide :title, @user.username %>
+<div class="row">
+  <div class="col-md-6 well col-md-offset-2">
+    <%= form_for [:admin, @user] do |f| %>
+      <p ><%= t "user.username" %>:
+        <span id="p-name"><%= @user.username %></span>
+      </p><br/>
+
+      <p><%= t "user.position" %>:
+        <%= f.collection_select :position_id, @positions, :id, :name,
+          {prompt: t("select.position")}, class: "form-control" %>
+      </p><br/>
+
+      <p><%= t "user.division" %>:
+        <%= f.collection_select :division_id, @divisions, :id, :name,
+          {prompt: t("select.division")}, class: "form-control" %>
+      </p><br/>
+
+      <%= f.submit t("user.save_change"), class: "btn btn-success dn-btn-save" %>
+    <% end %>
+  </div>
+</div>
