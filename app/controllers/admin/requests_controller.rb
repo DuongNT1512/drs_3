@@ -9,17 +9,17 @@ class Admin::RequestsController < ApplicationController
   end
 
   def update
-    authorize User
+    authorize current_user
     if @request.update_attributes request_params
       flash[:success] = t "notification.success"
     else
       flash[:danger] = t "notification.fail"
     end
+    authorize @request
     redirect_to admin_requests_path
   end
 
   private
-
   def request_params
     params.require(:request).permit :approved
   end

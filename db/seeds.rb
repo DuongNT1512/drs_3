@@ -11,6 +11,7 @@ admin = User.create username: "admin",
   password: "123456",
   password_confirmation: "123456",
   role: 0
+
 Position.create! name: "Manager"
 Position.create! name: "Employee"
 Position.create! name: "Practice"

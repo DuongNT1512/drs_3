@@ -76,9 +76,16 @@ en:
     division: "Division"
     position: "Position"
     language: "Language"
+    save_change: "Save change"
 
   notification:
     not_admin: "You are not authorized to perform this action."
     login: "Please login"
     success: "Success"
     fail: "Fail"
+    destroy_fail: "Delete user fail"
+    destroy_success: "Delete user success"
+  select:
+    position: "Select posision"
+    division: "Select division"
+    language: "Select language"

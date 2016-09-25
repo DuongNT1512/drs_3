@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :requests
   namespace :admin do
     root "users#index"
-    resources :users, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :destroy, :edit]
     resources :requests, except: [:new, :create]
   end
   root "requests#index"
