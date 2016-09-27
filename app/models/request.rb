@@ -7,9 +7,11 @@ class Request < ApplicationRecord
   validates :compensation_time_from, presence: true
   validates :compensation_time_to, presence: true
 
-
+  delegate :username, to: :user, prefix: true, allow_nil: true
   enum request_kind: ["in_late", "leave_out", "leave_early"]
   enum approved: [:init, :approved, :reject]
+
+  scope :request_init, -> {where approved: :init}
 
   private
   def check_time

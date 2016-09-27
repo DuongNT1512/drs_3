@@ -52,6 +52,9 @@ en:
     time_fail: "Time fail"
     delete: "Delete"
     edit: "Edit"
+    reject: "Reject"
+    approve: "Approve"
+    action: "Action"
 
   time:
     formats:
@@ -77,3 +80,5 @@ en:
   notification:
     not_admin: "You are not authorized to perform this action."
     login: "Please login"
+    success: "Success"
+    fail: "Fail"
