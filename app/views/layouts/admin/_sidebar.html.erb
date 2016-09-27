@@ -1,0 +1,52 @@
+<div id="sidebar-wrapper" class="lm-wrapper">
+  <ul class="sidebar-nav">
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to admin_root_path do %>
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.dash_board" %></span>
+      <% end %>
+    </li>
+
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to admin_users_path do %>
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.user" %></span>
+      <% end %>
+    </li>
+
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to "#" do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.report" %></span>
+      <% end %>
+    </li>
+
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to "#" do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.request" %></span>
+      <% end %>
+    </li>
+
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to "#" do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.division" %></span>
+      <% end %>
+    </li>
+
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to "#" do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.position" %></span>
+      <% end %>
+    </li>
+
+    <li class="panel-group hvr-bounce-to-left">
+      <%= link_to "#" do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <span class="lm-text"><%= t "side_bar.language" %></span>
+      <% end %>
+    </li>
+  </ul>
+</div>

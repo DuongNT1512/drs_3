@@ -6,7 +6,7 @@
 
       <div class="form-group">
         <%= f.label :request_kind %>
-        <%= f.select :request_kind, options_for_select(@kind, @request.kind),
+        <%= f.select :request_kind, options_for_select(@request_kinds, @request.request_kind),
           class: "form-control" %>
       </div>
 
