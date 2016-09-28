@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :manager do
-    root "users#index"
+    root "requests#index"
     resources :users, except: [:new, :create]
     resources :requests, except: [:new, :create]
   end

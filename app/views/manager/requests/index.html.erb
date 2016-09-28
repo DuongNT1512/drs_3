@@ -1,0 +1,41 @@
+<% provide :title, t("header.request") %>
+<h1 class="text-center"><%= t "header.request" %></h1>
+<div class="admin-content">
+  <table class="table">
+    <thead>
+      <th><%= t "user.name" %></th>
+      <th><%= t "request.date_leave_from" %></th>
+      <th><%= t "request.date_leave_to" %></th>
+      <th><%= t "request.compensation_time_from" %></th>
+      <th><%= t "request.compensation_time_to" %></th>
+      <th><%= t "request.request_kind" %></th>
+      <th><%= t "request.reason" %></th>
+      <th></th>
+      <th class="action"><%= t "request.action" %></th>
+    </thead>
+    <tbody>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= link_to request.user_username %></td>
+          <td><%= request.date_leave_from %></td>
+          <td><%= request.date_leave_to %></td>
+          <td><%= request.compensation_time_from %></td>
+          <td><%= request.compensation_time_to %></td>
+          <td><%= request.request_kind %></td>
+          <td><%= request.reason %></td>
+          <td class="dn-action-padding">
+            <span>
+              <%= link_to t("request.approve"),
+                manager_request_path(request, request: {approved: "approved"}),
+                data:{confirm: t("sure")}, method: :put %> /
+              <%= link_to t("request.reject"),
+                manager_request_path(request, request: {approved: "reject"}),
+                data:{confirm: t("sure")}, method: :put %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= will_paginate @requests %>

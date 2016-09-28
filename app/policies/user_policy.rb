@@ -26,14 +26,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    verify_admin
+    @user.present?
   end
 
-  def edit?
+  def update?
     if @user.admin?
       [:role]
     elsif @user.manager?
-      [:division]
+      [:division_id]
     elsif user_is_owner_of_record?
       [:request_kind, :date_leave_from, :date_leave_to,
         :compensation_time_from, :compensation_time_to, :reason]
@@ -44,8 +44,8 @@ class UserPolicy < ApplicationPolicy
     !verify_manager || !verify_admin
   end
 
-  def update?
-    @user.employee?
+  def edit?
+    update?
   end
 
   def create?

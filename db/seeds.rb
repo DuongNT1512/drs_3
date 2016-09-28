@@ -12,6 +12,12 @@ admin = User.create username: "admin",
   password_confirmation: "123456",
   role: 0
 
+manager = User.create username: "manager",
+  email: "manager@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: 1
+
 Position.create! name: "Manager"
 Position.create! name: "Employee"
 Position.create! name: "Practice"
@@ -30,7 +36,8 @@ User.create! username: "duong",
   password: "123456",
   password_confirmation: "123456",
   division_id: "1",
-  position_id: "1"
+  position_id: "1",
+  language_id: "1"
 
 Request.create! user_id: "2",
   request_kind: "in_late",

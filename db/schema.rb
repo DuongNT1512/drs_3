@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160921004751) do
     t.integer  "role",                   default: 2
     t.integer  "position_id"
     t.integer  "division_id"
+    t.integer  "language_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160921004751) do
     t.string   "last_sign_in_ip"
     t.index ["division_id"], name: "index_users_on_division_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["language_id"], name: "index_users_on_language_id", using: :btree
     t.index ["position_id"], name: "index_users_on_position_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -101,5 +103,6 @@ ActiveRecord::Schema.define(version: 20160921004751) do
   add_foreign_key "reports", "users"
   add_foreign_key "requests", "users"
   add_foreign_key "users", "divisions"
+  add_foreign_key "users", "languages"
   add_foreign_key "users", "positions"
 end

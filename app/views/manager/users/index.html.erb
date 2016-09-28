@@ -1,0 +1,32 @@
+<% provide :title, t("header.users") %>
+<h1 class="text-center"><%= t "header.users" %></h1>
+<div class="admin-content">
+  <table class="table">
+    <thead>
+      <th><%= t "user.username" %></th>
+      <th><%= t "user.email" %></th>
+      <th><%= t "user.division" %></th>
+      <th><%= t "user.position" %></th>
+      <th><%= t "user.language" %></th>
+      <th class="action"><%= t :action %></th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, [:admin, user] %></td>
+          <td><%= user.email %></td>
+          <td><%= user.user_division %></td>
+          <td><%= user.user_position %></td>
+          <td><%= user.user_language %></td>
+          <td class="dn-action-padding">
+            <%= link_to t(:show_profile), manager_user_path(user),
+              class: "btn btn-primary" %>
+            <%= link_to t(:delete), [:manager, user], method: :delete,
+              data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" unless (current_user? user) || (user.admin?) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= will_paginate @users %>
