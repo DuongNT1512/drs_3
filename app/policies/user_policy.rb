@@ -22,21 +22,20 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    verify_admin || verify_manager
+    @user.present?
   end
 
   def show?
-    verify_admin
+    @user.present?
   end
 
   def update?
     if @user.admin?
-      [:role]
+      [:role, :position_id]
     elsif @user.manager?
-      [:division]
-    elsif user_is_owner_of_record?
-      [:request_kind, :date_leave_from, :date_leave_to,
-        :compensation_time_from, :compensation_time_to, :reason]
+      [:division_id, :language_id]
+    elsif current_user? user
+      [:username, :password]
     end
   end
 
@@ -50,6 +49,10 @@ class UserPolicy < ApplicationPolicy
 
   def create?
     @user.employee?
+  end
+
+  def destroy?
+    new?
   end
 
   private

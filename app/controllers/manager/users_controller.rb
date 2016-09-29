@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Manager::UsersController < ApplicationController
   before_action :find_user, except: [:index, :new, :create]
   after_action :verify_authorized
 
@@ -19,11 +19,8 @@ class Admin::UsersController < ApplicationController
   def update
     authorize @user
     if @user.update_attributes user_params
-      if @user.check_manager?
-        @user.manager!
-      end
       flash[:success] = t "notification.success"
-      redirect_to admin_users_path
+      redirect_to manager_users_path
     else
       flash[:danger] = t "notification.fail"
       render :edit
@@ -37,12 +34,13 @@ class Admin::UsersController < ApplicationController
     else
       flash[:danger] = t "notification.destroy_fail"
     end
-    redirect_to admin_users_path
+    redirect_to manager_users_path
   end
 
   private
   def user_params
-    params.require(:user).permit :name, :position_id, :division_id, :role
+    params.require(:user).permit :name, :position_id, :division_id,
+      :language_id, :role
   end
 
   def load_data
@@ -55,7 +53,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by id: params[:id]
     if @user.nil?
       flash[:danger] = t "user.empty"
-      redirect_to admin_users_path
+      redirect_to manager_users_path
     end
   end
 end

@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :find_request, except: [:new, :create, :index]
   before_action :load_request_kind , only: [:new, :edit]
-  after_action :verify_authorized, except: :index
+  after_action :verify_authorized
 
   def new
     authorize User
@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
   def index
     @requests = current_user.requests.all.paginate page: params[:page],
       per_page: Settings.request_page
+    authorize current_user
   end
 
   def edit

@@ -1,4 +1,4 @@
-class Admin::RequestsController < ApplicationController
+class Manager::RequestsController < ApplicationController
   before_action :find_request, only: :update
   after_action :verify_authorized
 
@@ -16,7 +16,7 @@ class Admin::RequestsController < ApplicationController
       flash[:danger] = t "notification.fail"
     end
     authorize @request
-    redirect_to admin_requests_path
+    redirect_to manager_requests_path
   end
 
   private
@@ -28,7 +28,7 @@ class Admin::RequestsController < ApplicationController
     @request = Request.find_by_id params[:id]
     if @request.nil?
       flash[:danger] = t "request.empty"
-      redirect_to admin_requests_path
+      redirect_to manager_requests_path
     end
   end
 end

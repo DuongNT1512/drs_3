@@ -26,10 +26,10 @@
           <td class="dn-action-padding">
             <span>
               <%= link_to t("request.approve"),
-                admin_request_path(request, request: {approved: "approved"}),
+                manager_request_path(request, request: {approved: "approved"}),
                 data:{confirm: t("sure")}, method: :put %> /
               <%= link_to t("request.reject"),
-                admin_request_path(request, request: {approved: "reject"}),
+                manager_request_path(request, request: {approved: "reject"}),
                 data:{confirm: t("sure")}, method: :put %>
             </span>
           </td>

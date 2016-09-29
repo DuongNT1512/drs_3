@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :role, default: 2
       t.references :position, foreign_key: true
       t.references :division, foreign_key: true
+      t.references :language, foreign_key: true
 
       t.timestamps
     end
