@@ -18,6 +18,12 @@
         <div id="wrapper">
           <%= render "layouts/admin/sidebar" %>
         </div>
+        <div class="td-index">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag :div, message,
+              class: "alert alert-#{message_type} text-center" %>
+          <% end %>
+        </div>
       <% elsif current_user.manager? %>
         <div id="wrapper">
           <%= render "layouts/manager/header" %>
@@ -25,18 +31,24 @@
         <div id="wrapper">
           <%= render "layouts/manager/sidebar" %>
         </div>
+        <% flash.each do |message_type, message| %>
+          <%= content_tag :div, message,
+            class: "alert alert-#{message_type} text-center" %>
+        <% end %>
       <% else %>
         <%= render "layouts/header" %>
       <% end %>
     <% else %>
       <%= render "layouts/header" %>
-    <% end %>
-    <div class="admin">
       <% flash.each do |message_type, message| %>
-        <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+        <%= content_tag :div, message,
+          class: "alert alert-#{message_type} text-center" %>
       <% end %>
+    <% end %>
+    <div class="admin container">
       <div class="admin-content">
         <%= yield %>
+        <div class="clearfix"></div>
       </div>
     </div>
     <%= render "layouts/footer" %>

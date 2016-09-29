@@ -74,7 +74,7 @@ en:
     formats:
       default: "%Y-%m-%d %r"
       time_format: "%H:%M:%S"
-      long:  "%B %d, %Y at %r"
+      long: "%B %d, %Y at %r"
 
   side_bar:
     dash_board: "Dash board"
