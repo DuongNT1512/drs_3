@@ -2,10 +2,12 @@
 <div class="dn-font-group">
   <h1 class="text-center"><%= t "report.all" %></h1>
   <div class="panel-body">
-    <%= link_to t("report.new"), new_report_path, class: "btn btn-primary" %>
-    <div>
-      <%= render "all_reports" %>
-    </div>
+    <% if policy(Report).new? %>
+      <%= link_to t("report.new"), new_report_path, class: "btn btn-primary" %>
+      <div>
+        <%= render "all_reports" %>
+      </div>
+    <% end %>
     <%= will_paginate @reports %>
   </div>
 </div>

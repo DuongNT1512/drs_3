@@ -18,6 +18,7 @@ gem "bootstrap3-datetimepicker-rails"
 gem "momentjs-rails"
 gem "simple_form"
 gem "config"
+gem "ransack"
 
 group :development, :test do
   gem "mysql2"
