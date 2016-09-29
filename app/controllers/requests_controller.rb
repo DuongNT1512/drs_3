@@ -1,13 +1,17 @@
 class RequestsController < ApplicationController
   before_action :find_request, except: [:new, :create, :index]
   before_action :load_request_kind , only: [:new, :edit]
+  after_action :verify_authorized, except: :index
 
   def new
+    authorize User
     @request = Request.new
+    authorize Request
   end
 
   def create
-    @request = current_user.request.new request_params
+    authorize current_user
+    @request = current_user.requests.new request_params
     if @request.save
       flash[:success] = t "request.create_success"
       redirect_to requests_path
@@ -19,14 +23,18 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = current_user.request.all.paginate page: params[:page],
+    @requests = current_user.requests.all.paginate page: params[:page],
       per_page: Settings.request_page
   end
 
   def edit
+    authorize current_user
+    authorize @request
   end
 
   def update
+    authorize current_user
+    authorize @request
     if @request.update_attributes request_params
       flash.now[:success] = t "request.update_success"
     else
@@ -37,6 +45,7 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    authorize @request
     if @request.destroy
       flash[:success] = t "request.delete"
     else
@@ -52,7 +61,7 @@ class RequestsController < ApplicationController
   end
 
   def find_request
-    @request = current_user.request.find_by_id params[:id]
+    @request = current_user.requests.find_by_id params[:id]
     if @request.nil?
       flash[:danger] = t "notice.not_lesson"
       redirect_to requests_path

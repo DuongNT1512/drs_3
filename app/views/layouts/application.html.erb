@@ -10,13 +10,24 @@
   </head>
 
   <body>
-    <% if user_signed_in? && current_user.admin? %>
-      <div id="wrapper">
-        <%= render "layouts/admin/header" %>
-      </div>
-      <div id="wrapper">
-        <%= render "layouts/admin/sidebar" %>
-      </div>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <div id="wrapper">
+          <%= render "layouts/admin/header" %>
+        </div>
+        <div id="wrapper">
+          <%= render "layouts/admin/sidebar" %>
+        </div>
+      <% elsif current_user.manager? %>
+        <div id="wrapper">
+          <%= render "layouts/manager/header" %>
+        </div>
+        <div id="wrapper">
+          <%= render "layouts/manager/sidebar" %>
+        </div>
+      <% else %>
+        <%= render "layouts/header" %>
+      <% end %>
     <% else %>
       <%= render "layouts/header" %>
     <% end %>

@@ -17,7 +17,7 @@
               <li><%= link_to t("header.users"), "#" %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to t(:logout), destroy_user_session_path, method: :delete %>
+                <%= link_to t(:logout), destroy_user_session_path, method: :delete, data: {confirm: t(:sure)} %>
               </li>
             </ul>
           </li>
