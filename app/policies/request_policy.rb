@@ -1,8 +1,8 @@
 class RequestPolicy < ApplicationPolicy
   attr_reader :user, :request
 
-  def initialize user, request
-    @user = user
+  def initialize current_user, request
+    @user = current_user
     @request = request
   end
 
@@ -19,7 +19,7 @@ class RequestPolicy < ApplicationPolicy
   end
 
   def index?
-    @user.admin? || user_is_owner_of_record?
+    @user.manager? || user_is_owner_of_record?
   end
 
   def update?

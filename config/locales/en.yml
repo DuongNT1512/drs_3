@@ -5,6 +5,7 @@ en:
   signup: "Sign up"
   error: "Error %{error_count} errors"
   sure: "Are you sure?"
+  manager: "Manager"
 
   home:
     signup: "Sign up Now"

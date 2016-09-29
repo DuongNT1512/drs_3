@@ -19,10 +19,10 @@
           <td><%= user.user_position %></td>
           <td><%= user.user_language %></td>
           <td class="dn-action-padding">
-            <%= link_to t(:show_profile), admin_user_path(user),
+            <%= link_to t(:show_profile), manager_user_path(user),
               class: "btn btn-primary" %>
             <% unless (current_user? user) || policy(user).destroy? %>
-              <%= link_to t(:delete), [:admin, user], method: :delete,
+              <%= link_to t(:delete), [:manager, user], method: :delete,
                 data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
             <% end %>
           </td>

@@ -30,7 +30,16 @@ User.create! username: "duong",
   password: "123456",
   password_confirmation: "123456",
   division_id: "1",
-  position_id: "1"
+  position_id: "2",
+  language_id: "1"
+
+manager = User.create username: "manager",
+  email: "manager@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  division_id: "2",
+  position_id: "1",
+  role: 1
 
 Request.create! user_id: "2",
   request_kind: "in_late",
