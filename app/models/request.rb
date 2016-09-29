@@ -12,6 +12,8 @@ class Request < ApplicationRecord
   enum approved: [:init, :approved, :reject]
 
   scope :request_init, -> {where approved: :init}
+  scope :all_division, -> manager_division_id {where "user_id IN
+    (SELECT user_id FROM users WHERE division_id = ?)", manager_division_id}
 
   private
   def check_time

@@ -1,20 +1,13 @@
 class Manager::RequestsController < ApplicationController
-  before_action :find_request, only: :update
   after_action :verify_authorized
 
   def index
     authorize Report
-    @requests = Request.request_init.paginate page: params[:page],
-      per_page: Settings.page
-    authorize User
-  end
 
-  private
-  def find_request
-    @request = Request.find_by_id params[:id]
-    if @request.nil?
-      flash[:danger] = t "request.empty"
-      redirect_to manager_requests_path
-    end
+    @working_days = Report.working_days
+    @progresses = Progress.all
+    @search = Report.includes(:user, :progress).request_init.search params[:q]
+    @reports = @search.result.paginate page: params[:page], per_page: Settings.page
+    authorize User
   end
 end

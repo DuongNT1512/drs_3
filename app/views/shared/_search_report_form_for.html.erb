@@ -1,0 +1,25 @@
+<%= search_form_for @search, url: admin_reports_path, method: :get do |f| %>
+  <div class="field col-md-6">
+    <%= f.label :email %>
+    <%= f.text_field :user_email_cont,
+      class: "form-control", placeholder: t("report.search_email") %>
+  </div>
+
+  <div class="field col-md-6">
+    <%= f.label :progress %>
+    <%= f.select :progress_id_eq,
+      options_from_collection_for_select(@progresses, :id, :name,
+      @search.progress_id_eq),
+      {include_blank: t("all"), prompt: t(:select_progress)},
+      {class: "form-control"} %>
+  </div>
+  <div class="field col-md-6">
+    <%= f.label :working_day %>
+    <%= f.select :working_day_eq, @working_days,
+      {include_blank: t("all"), prompt: t(:select_working_day)},
+      {class: "form-control"} %>
+  </div>
+  <div class="actions">
+    <%= f.submit t(:search), class: "btn btn-success " %>
+  </div>
+<% end %>

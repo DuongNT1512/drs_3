@@ -1,22 +1,29 @@
 <% provide :title, t("header.request") %>
 <h1 class="text-center"><%= t "header.request" %></h1>
-<div class="admin-content">
-  <table class="table">
+<div>
+  <%= render "shared/search_request_form_for" %>
+  <table class="table table-hover table-striped td-table">
     <thead>
-      <th><%= t "user.name" %></th>
-      <th><%= t "request.date_leave_from" %></th>
-      <th><%= t "request.date_leave_to" %></th>
-      <th><%= t "request.compensation_time_from" %></th>
-      <th><%= t "request.compensation_time_to" %></th>
-      <th><%= t "request.request_kind" %></th>
-      <th><%= t "request.reason" %></th>
       <th></th>
-      <th class="action"><%= t "request.action" %></th>
+      <th><%= sort_link @search, :user_name, t("report.user") %></th>
+      <th>
+        <%= sort_link @search, :date_leave_from, t("report.date_leave_from") %>
+      </th>
+      <th><%= sort_link @search, :date_leave_to, t("report.date_leave_to") %></th>
+      <th>
+        <%= sort_link @search, :compensation_time_from,
+          t("report.compensation_time_from") %>
+      </th>
+      <th><%= sort_link @search, :compensation_time_to,
+        t("report.compensation_time_to") %>
+      </th>
+      <th><%= sort_link @search, :request_kind, t("report.request_kind") %></th>
+      <th><%= sort_link @search, :reason, t("report.reason") %></th>
     </thead>
     <tbody>
       <% @requests.each do |request| %>
         <tr>
-          <td><%= link_to request.user_username %></td>
+          <td><%= link_to request.user.username %></td>
           <td><%= request.date_leave_from %></td>
           <td><%= request.date_leave_to %></td>
           <td><%= request.compensation_time_from %></td>

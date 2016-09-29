@@ -1,0 +1,38 @@
+<%= search_form_for @search, url: admin_requests_path, method: :get do |f| %>
+  <div class="field col-md-6">
+    <%= f.label :name %>
+    <%= f.text_field :name_cont, class: "form-control",
+      placeholder: t("request.user") %>
+  </div>
+
+  <td><%= link_to request.user.username %></td>
+          <td><%= request.date_leave_from %></td>
+          <td><%= request.date_leave_to %></td>
+          <td><%= request.compensation_time_from %></td>
+          <td><%= request.compensation_time_to %></td>
+          <td><%= request.request_kind %></td>
+          <td><%= request.reason %></td>
+
+  <div class="field col-md-6">
+    <%= f.label :date_leave_from %>
+    <%= f.select :date_leave_from_eq, class: "form-control",
+      placeholder: t("request.date_leave_from") %>
+  </div>
+
+  <div class="field col-md-6">
+    <%= f.label :compensation_time_from %>
+    <%= f.select :compensation_time_from_eq, class: "form-control",
+      placeholder: t("request.compensation_time_from") %>
+  </div>
+
+  <div class="field col-md-6">
+    <%= f.label :working_day %>
+    <%= f.select :working_day_eq, @working_days,
+      {include_blank: t("all"), prompt: t(:select_working_day)},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t(:search), class: "btn btn-success " %>
+  </div>
+<% end %>
