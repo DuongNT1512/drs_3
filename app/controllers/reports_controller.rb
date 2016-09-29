@@ -1,18 +1,25 @@
 class ReportsController < ApplicationController
   before_action :find_report, only: :update
+  after_action :verify_authorized
 
   def index
+    authorize Report
     @reports = current_user.reports.all.paginate page: params[:page],
       per_page: Settings.request_page
+    authorize User
   end
 
   def new
+    authorize current_user
     @working_day = Report.working_days.keys
     load_data
     @report = Report.new
+    authorize @report
   end
 
   def create
+    authorize current_user
+    authorize @report
     @report = current_user.reports.new report_params
     binding.pry
     if @report.save
@@ -27,6 +34,9 @@ class ReportsController < ApplicationController
   end
 
   def update
+    authorize current_user
+    authorize @report
+
     if @report.update_attributes report_params
       flash.now[:success] = t "report.update_success"
     else

@@ -3,6 +3,7 @@ class Manager::RequestsController < ApplicationController
   after_action :verify_authorized
 
   def index
+    authorize Report
     @requests = Request.request_init.paginate page: params[:page],
       per_page: Settings.page
     authorize User
