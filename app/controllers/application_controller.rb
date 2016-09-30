@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :authenticate_user!
-  before_action :verify_admin
   protect_from_forgery with: :exception
 
 
@@ -24,6 +23,13 @@ class ApplicationController < ActionController::Base
 
   def verify_admin
     unless current_user.admin?
+      flash[:error] = t "notification.not_admin"
+      redirect_to root_path
+    end
+  end
+
+  def verify_manager
+    unless current_user.manager?
       flash[:error] = t "notification.not_admin"
       redirect_to root_path
     end

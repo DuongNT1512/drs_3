@@ -1,5 +1,6 @@
 class Admin::ReportsController < ApplicationController
   after_action :verify_authorized
+    before_action :verify_admin
 
   def index
     authorize User

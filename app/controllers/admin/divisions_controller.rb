@@ -1,6 +1,7 @@
 class Admin::DivisionsController < ApplicationController
   after_action :verify_authorized
   before_action :find_division, except: [:index, :new]
+    before_action :verify_admin
 
   def index
     @search = Division.search params[:q]

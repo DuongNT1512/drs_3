@@ -1,5 +1,6 @@
 class Manager::ReportsController < ApplicationController
   after_action :verify_authorized
+  before_action :verify_manager
 
   def index
     authorize Report

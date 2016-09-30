@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :find_user, except: [:index, :new, :create]
   after_action :verify_authorized
+    before_action :verify_admin
 
   def index
     load_data

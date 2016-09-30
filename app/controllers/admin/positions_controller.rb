@@ -1,5 +1,6 @@
 class Admin::PositionsController < ApplicationController
   after_action :verify_authorized
+    before_action :verify_admin
 
   def index
     @search = Position.search params[:q]

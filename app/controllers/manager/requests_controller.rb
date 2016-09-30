@@ -1,6 +1,7 @@
 class Manager::RequestsController < ApplicationController
   before_action :find_request, only: :update
   after_action :verify_authorized
+  before_action :verify_manager
 
   def index
     @request_kinds = Request.request_kinds
