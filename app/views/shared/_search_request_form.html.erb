@@ -1,19 +1,19 @@
 <%= search_form_for @search, url: manager_requests_path, method: :get do |f| %>
   <div class="field col-md-6">
-    <%= f.label :user_username %>
+    <%= f.label :username %>
     <%= f.text_field :user_username_cont, class: "form-control",
       placeholder: t("request.user") %>
   </div>
 
   <div class="field col-md-6">
     <%= f.label :date_leave_from %>
-    <%= f.text_field :date_leave_from_cont, class: "form-control",
+    <%= f.text_field :date_leave_from_cont, class: "form-control datepicker",
       placeholder: t("request.date_leave_from") %>
   </div>
 
   <div class="field col-md-6">
     <%= f.label :compensation_time_from %>
-    <%= f.text_field :compensation_time_from_cont, class: "form-control",
+    <%= f.text_field :compensation_time_from_cont, class: "form-control datepicker",
       placeholder: t("request.compensation_time_from") %>
   </div>
 

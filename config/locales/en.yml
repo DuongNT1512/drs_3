@@ -56,7 +56,7 @@ en:
     reject: "Reject"
     approve: "Approve"
     action: "Action"
-    user: "User name"
+    user: "Username"
 
   report:
     progess: "Progess"
@@ -81,7 +81,7 @@ en:
       long: "%B %d, %Y at %r"
 
   side_bar:
-    dash_board: "Dash board"
+    dash_board: "Dashboard"
     user: "Users"
     report: "Report"
     request: "Request"
