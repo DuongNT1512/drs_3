@@ -1,27 +1,29 @@
-<h1 class="text-center"><%= t "report.all" %></h1>
-<div>
-  <%= render "shared/search_report_form_for" %>
-  <table class="table table-hover table-striped td-table">
-    <thead>
-      <th></th>
-      <th><%= sort_link @search, :user_email, t("report.user") %></th>
-      <th><%= sort_link @search, :progress_id, t("report.progress") %></th>
-      <th><%= sort_link @search, :working_day, t("report.working_day") %></th>
-      <th><%= sort_link @search, :created_at, t("report.date") %></th>
-      <th><%= sort_link @search, :achievement, t("report.achievement") %></th>
-    </thead>
-    <tbody>
-      <% @reports.each.with_index do |report, index| %>
-        <tr>
-          <td><%= index_for_page index, params[:page] %></td>
-          <td><%= report.user.email %></td>
-          <td><%= report.progress_name %></td>
-          <td><%= report.working_day %></td>
-          <td><%= l report.created_at, format: :default%></td>
-          <td><%= report.achievement %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= will_paginate @reports %>
+<div class="td-index">
+  <h1 class="text-center"><%= t "report.all" %></h1>
+  <div>
+    <%= render "shared/search_report_form_for" %>
+    <table class="table table-hover table-striped td-table">
+      <thead>
+        <th></th>
+        <th><%= sort_link @search, :user_email, t("report.user") %></th>
+        <th><%= sort_link @search, :progress_id, t("report.progress") %></th>
+        <th><%= sort_link @search, :working_day, t("report.working_day") %></th>
+        <th><%= sort_link @search, :created_at, t("report.date") %></th>
+        <th><%= sort_link @search, :achievement, t("report.achievement") %></th>
+      </thead>
+      <tbody>
+        <% @reports.each.with_index do |report, index| %>
+          <tr>
+            <td><%= index_for_pages index, params[:page] %></td>
+            <td><%= report.user.email %></td>
+            <td><%= report.progress_name %></td>
+            <td><%= report.working_day %></td>
+            <td><%= l report.created_at, format: :default%></td>
+            <td><%= report.achievement %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @reports %>
+  </div>
 </div>

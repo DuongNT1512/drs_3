@@ -25,7 +25,7 @@ class Admin::PositionsController < ApplicationController
 
   def update
     authorize current_user
-    if @position.update_attributes division_params
+    if @position.update_attributes position_params
       flash.now[:success] = t "success"
     else
       flash[:danger] = t "fail"
