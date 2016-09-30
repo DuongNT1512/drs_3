@@ -4,7 +4,7 @@ class Manager::RequestsController < ApplicationController
 
   def index
     @request_kinds = Request.request_kinds
-    @search = Request.includes(:user).request_init.search params[:q]
+    @search = Request.includes(:user).search params[:q]
     @requests = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
   end

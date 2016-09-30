@@ -1,4 +1,4 @@
-class Manager::RequestsController < ApplicationController
+class Manager::ReportController < ApplicationController
   after_action :verify_authorized
 
   def index

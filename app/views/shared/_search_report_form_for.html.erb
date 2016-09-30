@@ -1,8 +1,8 @@
 <%= search_form_for @search, url: admin_reports_path, method: :get do |f| %>
   <div class="field col-md-6">
-    <%= f.label :email %>
-    <%= f.text_field :user_email_cont,
-      class: "form-control", placeholder: t("report.search_email") %>
+    <%= f.label :user_username %>
+    <%= f.text_field :user_username_cont,
+      class: "form-control", placeholder: t("report.search_user") %>
   </div>
 
   <div class="field col-md-6">
