@@ -74,6 +74,19 @@ en:
     user: "User's report"
     search_email: "User's email"
 
+  report:
+    progess: "Progess"
+    working_day: "Working day"
+    languages: "Language"
+    date: "Report Date"
+    location: "Location"
+    achievement: "Achievement"
+    action: "Action"
+    new: "New Report"
+    all: "All Report"
+    submit: "Send to manager"
+    edit: "Edit report"
+
   time:
     formats:
       default: "%Y-%m-%d %r"

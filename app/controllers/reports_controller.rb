@@ -21,7 +21,6 @@ class ReportsController < ApplicationController
     authorize current_user
     authorize @report
     @report = current_user.reports.new report_params
-    binding.pry
     if @report.save
       flash[:success] = t "report.create_success"
       redirect_to reports_path
@@ -40,7 +39,7 @@ class ReportsController < ApplicationController
     if @report.update_attributes report_params
       flash.now[:success] = t "report.update_success"
     else
-      load_report_working_day
+      @working_day = Report.working_days.keys
       flash[:danger] = t "report.update_fail"
     end
     redirect_to reports_path
