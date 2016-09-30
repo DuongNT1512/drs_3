@@ -66,7 +66,9 @@ $gray-medium-light: #eaeaea;
 
 /*footer*/
 footer {
-  margin-top: 45px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
@@ -152,4 +154,12 @@ input {
   .form-control{
     color: $state-danger-text;
   }
+}
+
+#sidebar-wrapper {
+  margin-top: 0px !important;
+}
+
+.td-index {
+  margin-left: 250px;
 }

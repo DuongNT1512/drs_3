@@ -1,0 +1,29 @@
+<div class="td-index">
+  <h1 class="text-center"><%= t "report.all" %></h1>
+  <div>
+    <table class="table table-hover table-striped">
+      <thead>
+        <th></th>
+        <th><%= t "report.user" %></th>
+        <th><%= t "report.progess" %></th>
+        <th><%= t "report.working_day" %></th>
+        <th><%= t "report.date" %></th>
+        <th><%= t "report.achievement" %></th>
+      </thead>
+      <tbody>
+        <% @reports.each.with_index do |report, index| %>
+          <tr>
+            <td><%= index_for_page index, params[:page] %>
+            </td>
+            <td><%= report.user.email %></td>
+            <td><%= report.progress_name %></td>
+            <td><%= report.working_day %></td>
+            <td><%= l report.created_at, format: :default%></td>
+            <td><%= report.achievement %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @reports %>
+  </div>
+</div>

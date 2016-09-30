@@ -46,13 +46,16 @@ ActiveRecord::Schema.define(version: 20160921004751) do
   end
 
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "working_day"
+    t.integer  "working_day"
     t.integer  "user_id"
-    t.integer  "languages_id"
+    t.integer  "language_id"
     t.integer  "progress_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["languages_id"], name: "index_reports_on_languages_id", using: :btree
+    t.integer  "division_id"
+    t.string   "achievement"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["division_id"], name: "index_reports_on_division_id", using: :btree
+    t.index ["language_id"], name: "index_reports_on_language_id", using: :btree
     t.index ["progress_id"], name: "index_reports_on_progress_id", using: :btree
     t.index ["user_id"], name: "index_reports_on_user_id", using: :btree
   end
@@ -98,7 +101,8 @@ ActiveRecord::Schema.define(version: 20160921004751) do
   end
 
   add_foreign_key "positions", "divisions"
-  add_foreign_key "reports", "languages", column: "languages_id"
+  add_foreign_key "reports", "divisions"
+  add_foreign_key "reports", "languages"
   add_foreign_key "reports", "progresses"
   add_foreign_key "reports", "users"
   add_foreign_key "requests", "users"

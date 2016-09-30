@@ -18,8 +18,7 @@ gem "bootstrap3-datetimepicker-rails"
 gem "momentjs-rails"
 gem "simple_form"
 gem "config"
-gem "omniauth-facebook"
-gem "omniauth-google"
+gem "ransack"
 
 group :development, :test do
   gem "mysql2"
