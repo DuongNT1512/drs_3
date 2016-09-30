@@ -3,8 +3,9 @@ class Manager::RequestsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @requests = Request.request_init.paginate page: params[:page],
-      per_page: Settings.page
+    @request_kinds = Request.request_kinds
+    @search = Request.includes(:user).request_init.search params[:q]
+    @requests = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
   end
 

@@ -1,7 +1,7 @@
 <% provide :title, t("header.request") %>
 <h1 class="text-center"><%= t "header.request" %></h1>
 <div>
-  <%= render "shared/search_request_form_for" %>
+  <%= render "shared/search_request_form" %>
   <table class="table table-hover table-striped td-table">
     <thead>
       <th></th>
@@ -20,6 +20,7 @@
       <th><%= sort_link @search, :request_kind, t("report.request_kind") %></th>
       <th><%= sort_link @search, :reason, t("report.reason") %></th>
     </thead>
+
     <tbody>
       <% @requests.each do |request| %>
         <tr>
