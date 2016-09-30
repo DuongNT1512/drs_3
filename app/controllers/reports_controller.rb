@@ -19,7 +19,6 @@ class ReportsController < ApplicationController
 
   def create
     authorize current_user
-    authorize @report
     @report = current_user.reports.new report_params
     if @report.save
       flash[:success] = t "report.create_success"
