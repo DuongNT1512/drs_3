@@ -6,7 +6,7 @@ en:
   error: "Error %{error_count} errors"
   sure: "Are you sure?"
   manager: "Manager"
-
+  search: "Search"
   home:
     signup: "Sign up Now"
     init: "Static pages home"
@@ -69,6 +69,9 @@ en:
     all: "All Report"
     submit: "Send to manager"
     edit: "Edit report"
+    date: "Create date"
+    user: "User's report"
+    search_email: "User's email"
 
   time:
     formats:
