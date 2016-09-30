@@ -24,14 +24,22 @@ class ApplicationController < ActionController::Base
   def verify_admin
     unless current_user.admin?
       flash[:error] = t "notification.not_admin"
-      redirect_to root_path
+      if current_user.manager?
+        redirect_to manager_root_path
+      else
+        redirect_to root_path
+      end
     end
   end
 
   def verify_manager
     unless current_user.manager?
       flash[:error] = t "notification.not_admin"
-      redirect_to root_path
+      if current_user.admin?
+        redirect_to admin_root_path
+      else
+        redirect_to root_path
+      end
     end
   end
 end
