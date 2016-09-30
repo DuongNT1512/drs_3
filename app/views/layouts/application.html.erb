@@ -31,10 +31,12 @@
         <div id="wrapper">
           <%= render "layouts/manager/sidebar" %>
         </div>
-        <% flash.each do |message_type, message| %>
-          <%= content_tag :div, message,
-            class: "alert alert-#{message_type} text-center" %>
-        <% end %>
+        <div class="td-index">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag :div, message,
+              class: "alert alert-#{message_type} text-center" %>
+          <% end %>
+        </div>
       <% else %>
         <%= render "layouts/header" %>
       <% end %>

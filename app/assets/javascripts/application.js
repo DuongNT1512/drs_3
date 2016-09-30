@@ -22,3 +22,18 @@ $(document).on('turbolinks:load', function(){
     format: 'h : m DD / MM / YYYY '
   });
 });
+
+var flash = function(){
+  setTimeout(function(){
+    $('.alert').slideUp(500);
+  }, 2000);
+  var x = $(window).height();
+  var y = x - 60;
+  $('.content').css('min-height', x);
+  $('.page-content').css('min-height', x);
+  $('.signin').css('min-height', y);
+};
+
+$(document).ready(flash);
+$(document).on('page:load', flash);
+$(document).on('page:change', flash);
