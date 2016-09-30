@@ -1,0 +1,22 @@
+<div class="td-index">
+  <h1 class="text-center"><%= t "division.all_division" %></h1>
+  <div>
+    <%= render "shared/search_division_form_for" %>
+    <table class="table table-hover table-striped td-table">
+      <thead>
+        <th></th>
+        <th><%= sort_link @search, :name, t("user.name") %></th>
+      </thead>
+      <tbody>
+        <% @divisions.each.with_index do |division, index| %>
+          <tr>
+            <td><%= index_for_pages index, params[:page] %>
+            </td>
+            <td><%= link_to division.name, admin_division_path(division) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @divisions %>
+  </div>
+</div>

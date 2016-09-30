@@ -3,7 +3,9 @@ class Manager::UsersController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @users = User.all.paginate page: params[:page], per_page: Settings.page
+    load_data
+    @search = User.search params[:q]
+    @users = @search.result.includes(:division, :position, :language).paginate page: params[:page], per_page: Settings.page
     authorize User
   end
 
@@ -17,7 +19,7 @@ class Manager::UsersController < ApplicationController
   end
 
   def update
-    authorize @user
+    authorize current_user
     if @user.update_attributes user_params
       flash[:success] = t "notification.success"
       redirect_to manager_users_path

@@ -7,7 +7,7 @@ class RequestPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user_is_owner_of_record
+    user_is_owner_of_record?
   end
 
   def new?

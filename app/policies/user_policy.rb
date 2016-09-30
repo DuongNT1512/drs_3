@@ -52,7 +52,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    new?
+    !verify_admin
   end
 
   private

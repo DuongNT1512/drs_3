@@ -1,29 +1,28 @@
 <% provide :title, t("header.users") %>
 <div class="td-index">
   <h1 class="text-center"><%= t "header.users" %></h1>
+  <%= render "shared/search_user_form_for" %>
   <table class="table table-hover table-striped td-table">
     <thead>
       <th></th>
-      <th><%= t "user.username" %></th>
-      <th><%= t "user.email" %></th>
-      <th><%= t "user.division" %></th>
-      <th><%= t "user.position" %></th>
-      <th><%= t "user.language" %></th>
-      <th class="action"><%= t :action %></th>
+      <th><%= sort_link @search, :username, t("user.username") %></th>
+      <th><%= sort_link @search, :email, t("user.eamil") %></th>
+      <th><%= sort_link @search, :division_id, t("request.divition") %></th>
+      <th><%= sort_link @search, :position_id, t("request.position") %></th>
+      <th><%= sort_link @search, :language_id, t("request.language") %></th>
+      <th><%= t "action" %></th>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% @users.each.with_index do |user, index| %>
         <tr>
-          <td></td>
+          <td><%= index_for_pages index, params[:page] %></td>
           <td><%= link_to user.username, [:admin, user] %></td>
           <td><%= user.email %></td>
           <td><%= user.user_division %></td>
           <td><%= user.user_position %></td>
           <td><%= user.user_language %></td>
           <td class="dn-action-padding">
-            <%= link_to t(:show_profile), admin_user_path(user),
-              class: "btn btn-primary" %>
-            <% unless (current_user? user) || policy(user).destroy? %>
+            <% unless (current_user? user) || policy(current_user).destroy? %>
               <%= link_to t(:delete), [:admin, user], method: :delete,
                 data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
             <% end %>

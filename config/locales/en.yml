@@ -104,6 +104,22 @@ en:
     fail: "Fail"
     destroy_fail: "Delete user fail"
     destroy_success: "Delete user success"
+    not_division: "User must be in one division"
+
+  division:
+    name: "Division name"
+    all_division: "All Division"
+    delete: "Delete division"
+    all_user: "All User"
+    delete_fail: "Delete fail"
+
+  position:
+    name: "Position name"
+    all_position: "All Position"
+    all_user: "All User"
+    delete: "Delete position"
+    delete_fail: "Delete fail"
+
   select:
     position: "Select posision"
     division: "Select division"

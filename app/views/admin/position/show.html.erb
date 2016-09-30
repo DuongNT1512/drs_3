@@ -1,0 +1,31 @@
+<% provide :title, @position.name %>
+<hr/>
+<div class="td-index">
+  <h1 class="text-center"><%= t "position.all_user" %></h1>
+  <table class="table table-hover table-striped td-table">
+    <thead>
+      <th><%= sort_link @search, :username, t("user.username") %></th>
+      <th><%= t "user.email" %></th>
+      <th><%= t "user.division" %></th>
+      <th><%= t "user.language" %></th>
+      <th class="action"><%= t :action %></th>
+    </thead>
+    <tbody>
+      <% @users.each.with_index do |user, index| %>
+        <td><%= link_to user.username, [:admin, user] %></td>
+        <td><%= user.email %></td>
+        <td><%= user.user_position %></td>
+        <td><%= user.user_language %></td>
+        <td class="dn-action-padding">
+          <% unless (current_user? user) || policy(current_user).destroy? %>
+            <%= link_to t(:delete), [:admin, user], method: :delete,
+              data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
+          <% end %>
+        </td>
+      <%end%>
+    </tbody>
+  </table>
+  <%= will_paginate @users %>
+  <%= link_to t("position.delete"), [:admin, @position], method: :delete,
+    data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
+</div>

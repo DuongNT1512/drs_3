@@ -1,0 +1,21 @@
+<div class="td-index">
+  <h1 class="text-center"><%= t "position.all_position" %></h1>
+  <div>
+    <table class="table table-hover table-striped td-table">
+      <thead>
+        <th></th>
+        <th><%= sort_link @search, :name, t("user.name") %></th>
+      </thead>
+      <tbody>
+        <% @positions.each.with_index do |position, index| %>
+          <tr>
+            <td><%= index_for_pages index, params[:page] %>
+            </td>
+            <td><%= link_to position.name, admin_position_path(position) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @positions %>
+  </div>
+</div>

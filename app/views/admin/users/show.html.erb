@@ -1,6 +1,6 @@
 <% provide :title, @user.username %>
 <div class="row">
-  <div class="col-md-6 well col-md-offset-2">
+  <div class="col-md-6 well col-md-offset-4 td-show">
     <%= form_for [:admin, @user], remote: true do |f| %>
       <p ><%= t "user.username" %>:
         <span id="p-name">

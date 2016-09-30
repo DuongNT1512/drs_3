@@ -27,4 +27,7 @@ class User < ApplicationRecord
   def check_manager?
     self.position_name == "Manager"
   end
+
+  scope :all_manager, -> {where("position_id IN (select id from positions where
+    positions.name = ?)", "Manager")}
 end

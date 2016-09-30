@@ -1,0 +1,40 @@
+<%= search_form_for @search,
+  url: (current_user.admin? ? admin_users_path : manager_users_path),
+  method: :get do |f| %>
+  <div class="field col-md-6">
+    <%= f.label :username %>
+    <%= f.text_field :username_cont,
+      class: "form-control", placeholder: t("report.search_user") %>
+  </div>
+
+  <div class="field col-md-6">
+    <%= f.label :division_id %>
+    <%= f.select :division_id_eq,
+      options_from_collection_for_select(@divisions, :id, :name,
+      @search.division_id_eq),
+      {include_blank: t("all"), prompt: t("select_division")},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="field col-md-6">
+    <%= f.label :position_id %>
+    <%= f.select :position_id_eq,
+      options_from_collection_for_select(@positions, :id, :name,
+      @search.position_id_eq),
+      {include_blank: t("all"), prompt: t("select_position")},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="field col-md-6">
+    <%= f.label :language_id %>
+    <%= f.select :language_id_eq,
+      options_from_collection_for_select(@languages, :id, :name,
+      @search.language_id_eq),
+      {include_blank: t("all"), prompt: t("select_language")},
+      {class: "form-control"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t(:search), class: "btn btn-success " %>
+  </div>
+<% end %>

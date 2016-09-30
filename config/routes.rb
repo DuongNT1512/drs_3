@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :requests, except: [:new, :create]
     resources :reports, only: :index
   end
+
   root "requests#index"
 end
