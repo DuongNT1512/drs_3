@@ -1,0 +1,22 @@
+<div class="td-index">
+  <h1 class="text-center"><%= t "language.all_language" %></h1>
+  <div>
+    <%= render "shared/search_language_form_for" %>
+    <table class="table table-hover table-striped td-table">
+      <thead>
+        <th></th>
+        <th><%= sort_link @search, :name, t("user.name") %></th>
+      </thead>
+      <tbody>
+        <% @languages.each.with_index do |language, index| %>
+          <tr>
+            <td><%= index_for_pages index, params[:page] %>
+            </td>
+            <td><%= link_to language.name, admin_language_path(language) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @languages %>
+  </div>
+</div>

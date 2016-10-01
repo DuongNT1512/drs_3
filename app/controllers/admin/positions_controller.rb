@@ -1,12 +1,12 @@
 class Admin::PositionsController < ApplicationController
   before_action :verify_admin
   after_action :verify_authorized
+  before_action :find_position, except: [:index, :new]
 
   def index
     @search = Position.search params[:q]
     @positions = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
-    binding.pry
   end
 
   def show
@@ -16,6 +16,8 @@ class Admin::PositionsController < ApplicationController
   end
 
   def create
+    authorize current_user
+    authorize @position
     if @position.save
       flash[:success] = t :create_success
       redirect_to admin_positions_path
@@ -25,8 +27,14 @@ class Admin::PositionsController < ApplicationController
     end
   end
 
+  def edit
+    authorize current_user
+    authorize @position
+  end
+
   def update
     authorize current_user
+    authorize @position
     if @position.update_attributes position_params
       flash.now[:success] = t "success"
     else
@@ -36,6 +44,7 @@ class Admin::PositionsController < ApplicationController
   end
 
   def destroy
+    authorize current_user
     authorize @position
     if @position.destroy
       flash[:success] = t "position.delete"

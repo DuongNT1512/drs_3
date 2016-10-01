@@ -25,7 +25,9 @@
       <%end%>
     </tbody>
   </table>
-  <%= will_paginate @users %>
+  <%= link_to t("position.edit"), edit_admin_position_path(@position),
+    class: "btn btn-danger btn-primary" %>
   <%= link_to t("position.delete"), [:admin, @position], method: :delete,
     data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
+  <%= will_paginate @users %>
 </div>

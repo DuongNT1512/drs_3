@@ -19,6 +19,11 @@ gem "momentjs-rails"
 gem "simple_form"
 gem "config"
 gem "ransack"
+gem "omniauth-google-oauth2", "~> 0.4.1"
+gem "omniauth-facebook", "~> 4.0"
+gem "sidekiq"
+gem "sinatra", require: false
+gem "whenever", require: false
 
 group :development, :test do
   gem "mysql2"

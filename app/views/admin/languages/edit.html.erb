@@ -1,0 +1,11 @@
+<div class="td-index">
+  <h1><%= @language.name %></h1>
+  <%= form_for [:admin, @language] do |f| %>
+    <%= render "shared/error_messages", object: @language %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <%= f.submit t("language.update"), class: "btn btn-success" %>
+  <% end %>
+</div>

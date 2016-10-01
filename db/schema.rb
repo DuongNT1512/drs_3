@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 20160921004751) do
     t.integer  "position_id"
     t.integer  "division_id"
     t.integer  "language_id"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false

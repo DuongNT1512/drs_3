@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.references :position, foreign_key: true
       t.references :division, foreign_key: true
       t.references :language, foreign_key: true
+      t.string :provider
+      t.string :uid
 
       t.timestamps
     end

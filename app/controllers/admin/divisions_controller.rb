@@ -1,21 +1,24 @@
 class Admin::DivisionsController < ApplicationController
   before_action :find_division, except: [:index, :new]
   before_action :verify_admin
+  after_action :verify_authorized
 
   def index
     @search = Division.search params[:q]
     @divisions = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
+    authorize Division
   end
 
   def new
     authorize User
+    authorize Division
     @division = Division.new
   end
 
   def create
     authorize current_user
-    @division = Division.new request_params
+    @division = Division.new division_params
     if @division.save
       flash[:success] = t "success"
       redirect_to admin_divisions_path
@@ -23,9 +26,12 @@ class Admin::DivisionsController < ApplicationController
       flash[:danger] = t "fail"
       render :new
     end
+    authorize Division
   end
 
   def edit
+    authorize current_user
+    authorize @division
   end
 
   def show
@@ -37,6 +43,7 @@ class Admin::DivisionsController < ApplicationController
 
   def update
     authorize current_user
+    authorize @division
     if @division.update_attributes division_params
       flash.now[:success] = t "success"
     else
@@ -46,6 +53,7 @@ class Admin::DivisionsController < ApplicationController
   end
 
   def destroy
+    authorize current_user
     authorize @division
     if @division.destroy
       flash[:success] = t "request.delete"

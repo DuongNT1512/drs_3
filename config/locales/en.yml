@@ -117,6 +117,15 @@ en:
     edit: "Edit Division"
     update: "Update"
 
+  language:
+    name: "Language name"
+    all_language: "All Language"
+    delete: "Delete Language"
+    all_user: "All User"
+    delete_fail: "Delete fail"
+    edit: "Edit Language"
+    update: "Update"
+
   position:
     name: "Position name"
     all_position: "All Position"

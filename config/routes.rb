@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
   resources :requests, except: :show
   resources :reports
   resources :users
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :reports, only: :index
     resources :positions
     resources :divisions
+    resources :languages
   end
 
   namespace :manager do
