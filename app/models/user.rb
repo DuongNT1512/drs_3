@@ -4,8 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable
   # :trackable,:recoverable
 
-  devise :database_authenticatable, :registerable, :rememberable, :validatable,
-    :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
   belongs_to :division, optional: true
   belongs_to :position, optional: true
   belongs_to :language, optional: true
