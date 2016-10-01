@@ -12,16 +12,19 @@
     </thead>
     <tbody>
       <% @users.each.with_index do |user, index| %>
-        <td><%= link_to user.username, [:admin, user] %></td>
-        <td><%= user.email %></td>
-        <td><%= user.user_position %></td>
-        <td><%= user.user_language %></td>
-        <td class="dn-action-padding">
-          <% unless (current_user? user) || policy(current_user).destroy? %>
-            <%= link_to t(:delete), [:admin, user], method: :delete,
-              data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
-          <% end %>
-        </td>
+      <tr>
+          <td><%= index_for_pages index, params[:page] %></td>
+          <td><%= link_to user.username, [:admin, user] %></td>
+          <td><%= user.email %></td>
+          <td><%= user.user_position %></td>
+          <td><%= user.user_language %></td>
+          <td class="dn-action-padding">
+            <% unless (current_user? user) || policy(current_user).destroy? %>
+              <%= link_to t(:delete), [:admin, user], method: :delete,
+                data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
+            <% end %>
+          </td>
+        </tr>
       <%end%>
     </tbody>
   </table>

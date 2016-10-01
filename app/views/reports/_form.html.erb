@@ -10,19 +10,19 @@
           class: "form-control" %>
       </div>
 
-      <p><%= t "report.position" %>:
+      <p><%= t "report.division" %>:
         <%= f.collection_select :division_id, @divisions, :id, :name,
-          {prompt: t("select.position")}, class: "form-control" %>
+          {class: "form-control"} %>
       </p><br/>
 
       <p><%= t "report.language" %>:
         <%= f.collection_select :language_id, @languages, :id, :name,
-          {prompt: t("select.language")}, class: "form-control" %>
+          {class: "form-control"} %>
       </p><br/>
 
       <p><%= t "report.progress" %>:
         <%= f.collection_select :progress_id, @progresss, :id, :name,
-          {prompt: t("select.progress")}, class: "form-control" %>
+          {class: "form-control"} %>
       </p><br/>
 
       <p><%= t "report.achievement" %>:

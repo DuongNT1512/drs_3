@@ -7,6 +7,9 @@ class Request < ApplicationRecord
   validates :compensation_time_from, presence: true
   validates :compensation_time_to, presence: true
 
+  validate :check_time
+  validate :check_compensation_time
+
   delegate :username, to: :user, prefix: true, allow_nil: true
   enum request_kind: ["in_late", "leave_out", "leave_early"]
   enum approved: [:init, :approved, :reject]
@@ -17,15 +20,22 @@ class Request < ApplicationRecord
 
   private
   def check_time
-    errors.add :requests, I18n.t("request.time_fail") if date_leave_from > date_leave_to
+    unless date_leave_from.nil? && date_leave_to.nil?
+      unless date_leave_from < date_leave_to
+        errors.add :requests, I18n.t("request.time_fails1")
+        return false
+      end
+    end
+    true
   end
 
   def check_compensation_time
-    if compensation_time_from && compensation_time_to
-      if compensation_time_from > compensation_time_to &&
-        compensation_time_from > date_leave_to
-        errors.add :requests, I18n.t("request.time_fail")
+    unless compensation_time_from.nil? && compensation_time_to.nil?
+      unless compensation_time_from < compensation_time_to || compensation_time_from < date_leave_to
+        errors.add :requests, I18n.t("request.time_fails2")
+        return false
       end
     end
+    true
   end
 end

@@ -50,13 +50,15 @@ en:
     update_success: "Update success"
     update_fail: "Update fail"
     delete_fail: "Delete fail"
-    time_fail: "Time fail"
+    time_fails1: "Time leave fail"
+    time_fails2: "Time compensation fail"
     delete: "Delete"
     edit: "Edit"
     reject: "Reject"
     approve: "Approve"
     action: "Action"
     user: "Username"
+    time_leave: "Time leave"
 
   report:
     progess: "Progess"

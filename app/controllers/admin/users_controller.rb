@@ -24,6 +24,9 @@ class Admin::UsersController < ApplicationController
     if @user.update_attributes user_params
       if @user.check_manager?
         @user.manager!
+      elsif @user.check_employee?
+        binding.pry
+        @user.employee!
       end
       flash[:success] = t "notification.success"
       redirect_to admin_users_path

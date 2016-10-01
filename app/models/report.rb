@@ -4,6 +4,8 @@ class Report < ApplicationRecord
   belongs_to :progress
   belongs_to :division
 
+  validates :achievement, presence: true
+
   delegate :name, to: :division, prefix: true, allow_nil: true
   delegate :name, to: :language, prefix: true, allow_nil: true
   delegate :name, to: :progress, prefix: true, allow_nil: true
@@ -15,4 +17,6 @@ class Report < ApplicationRecord
       send("#{attr}_name")
     end
   end
+
+
 end

@@ -6,7 +6,6 @@
     <thead>
       <th></th>
       <th><%= sort_link @search, :username, t("user.username") %></th>
-      <th><%= sort_link @search, :email, t("user.email") %></th>
       <th><%= sort_link @search, :division_id, t("user.division") %></th>
       <th><%= sort_link @search, :position_id, t("user.position") %></th>
       <th><%= sort_link @search, :language_id, t("user.language") %></th>
@@ -15,14 +14,11 @@
       <% @users.each.with_index do |user, index| %>
         <tr>
           <td><%= index_for_pages index, params[:page] %>
-          <td><%= link_to user.username, [:manager, user] %></td>
-          <td><%= user.email %></td>
+          <td><%= link_to (user.username || user.email), [:manager, user]%></td>
           <td><%= user.user_division %></td>
           <td><%= user.user_position %></td>
           <td><%= user.user_language %></td>
           <td class="dn-action-padding">
-            <%= link_to t(:show_profile), manager_user_path(user),
-              class: "btn btn-primary" %>
             <% unless (current_user? user) || policy(user).destroy? %>
               <%= link_to t(:delete), [:manager, user], method: :delete,
                 data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>

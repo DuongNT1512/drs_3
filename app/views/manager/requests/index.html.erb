@@ -10,8 +10,9 @@
         <th>
           <%= sort_link @search, :date_leave_from, t("report.date_leave_from") %>
         </th>
-        <th>
-          <%= sort_link @search, :date_leave_to, t("report.date_leave_to") %></th>
+         <th>
+          <%= sort_link @search, :date_leave_to, t("report.time_leave") %>
+        </th>
         <th>
           <%= sort_link @search, :compensation_time_from,
             t("report.compensation_time_from") %>
@@ -28,9 +29,9 @@
         <% @requests.each.with_index do |request, index| %>
           <tr>
             <td><%= index_for_pages index, params[:page] %>
-            <td><%= link_to request.user.username, manager_user_path(request.user) %></td>
+            <td><%= link_to request.user.username || request.user.email , manager_user_path(request.user) %></td>
             <td><%= request.date_leave_from %></td>
-            <td><%= request.date_leave_to %></td>
+            <td><%= request.date_leave_to - request.date_leave_from %> Minute</td>
             <td><%= request.compensation_time_from %></td>
             <td><%= request.compensation_time_to %></td>
             <td><%= request.request_kind %></td>

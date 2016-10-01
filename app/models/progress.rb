@@ -1,3 +1,3 @@
 class Progress < ApplicationRecord
-  has_many :report, dependent: :destroy
+  has_many :reports, dependent: :destroy
 end

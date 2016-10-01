@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :requests, except: :show
   resources :reports
+  resources :users
 
   namespace :admin do
     root "reports#index"
