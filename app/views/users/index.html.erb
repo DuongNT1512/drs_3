@@ -6,25 +6,21 @@
     <thead>
       <th></th>
       <th><%= sort_link @search, :username, t("user.username") %></th>
-      <th><%= sort_link @search, :division_id, t("user.division") %></th>
-      <th><%= sort_link @search, :position_id, t("user.position") %></th>
-      <th><%= sort_link @search, :language_id, t("user.language") %></th>
+      <th><%= sort_link @search, :email, t("user.eamil") %></th>
+      <th><%= sort_link @search, :division_id, t("request.divition") %></th>
+      <th><%= sort_link @search, :position_id, t("request.position") %></th>
+      <th><%= sort_link @search, :language_id, t("request.language") %></th>
     </thead>
     <tbody>
       <% @users.each.with_index do |user, index| %>
         <% unless current_user? user %>
           <tr>
-            <td><%= index_for_pages index, params[:page] %>
-            <td><%= link_to (user.username || user.email), [:manager, user]%></td>
+            <td><%= index_for_pages index, params[:page] %></td>
+            <td><%= link_to user.username, user_path(user) %></td>
+            <td><%= user.email %></td>
             <td><%= user.user_division %></td>
             <td><%= user.user_position %></td>
             <td><%= user.user_language %></td>
-            <td class="dn-action-padding">
-              <% unless (current_user? user) || policy(user).destroy? %>
-                <%= link_to t(:delete), [:manager, user], method: :delete,
-                  data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
-              <% end %>
-            </td>
           </tr>
         <% end %>
       <% end %>

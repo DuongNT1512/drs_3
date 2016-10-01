@@ -1,11 +1,12 @@
 class Admin::PositionsController < ApplicationController
+  before_action :verify_admin
   after_action :verify_authorized
-    before_action :verify_admin
 
   def index
     @search = Position.search params[:q]
     @positions = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
+    binding.pry
   end
 
   def show

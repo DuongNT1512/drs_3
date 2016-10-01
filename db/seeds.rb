@@ -46,6 +46,6 @@ Request.create! user_id: "2",
   reason: "Busy",
   compensation_time_from: Time.zone.now + 10.seconds,
   compensation_time_to: Time.zone.now + 30.seconds,
-  date_leave_from: Time.zone.now + 5.seconds,
-  date_leave_to: Time.zone.now,
+  date_leave_to: Time.zone.now + 5.seconds,
+  date_leave_from: Time.zone.now,
   approved: "approved"

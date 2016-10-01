@@ -1,7 +1,6 @@
 class Admin::DivisionsController < ApplicationController
-  after_action :verify_authorized
   before_action :find_division, except: [:index, :new]
-    before_action :verify_admin
+  before_action :verify_admin
 
   def index
     @search = Division.search params[:q]
@@ -12,7 +11,6 @@ class Admin::DivisionsController < ApplicationController
   def new
     authorize User
     @division = Division.new
-    authorize Request
   end
 
   def create
@@ -25,6 +23,9 @@ class Admin::DivisionsController < ApplicationController
       flash[:danger] = t "fail"
       render :new
     end
+  end
+
+  def edit
   end
 
   def show

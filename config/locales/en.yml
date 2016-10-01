@@ -114,6 +114,8 @@ en:
     delete: "Delete division"
     all_user: "All User"
     delete_fail: "Delete fail"
+    edit: "Edit Division"
+    update: "Update"
 
   position:
     name: "Position name"
@@ -121,6 +123,8 @@ en:
     all_user: "All User"
     delete: "Delete position"
     delete_fail: "Delete fail"
+    edit: "Edit Position"
+    update: "Update"
 
   select:
     position: "Select posision"

@@ -14,22 +14,24 @@
     </thead>
     <tbody>
       <% @users.each.with_index do |user, index| %>
-        <tr>
-          <td><%= index_for_pages index, params[:page] %></td>
-          <td><%= link_to user.username, [:admin, user] %></td>
-          <td><%= user.email %></td>
-          <td><%= user.user_division %></td>
-          <td><%= user.user_position %></td>
-          <td><%= user.user_language %></td>
-          <td class="dn-action-padding">
-            <% unless (current_user? user) || policy(current_user).destroy? %>
-              <%= link_to t(:delete), [:admin, user], method: :delete,
-                data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
-            <% end %>
-          </td>
-        </tr>
+        <% unless current_user? user %>
+          <tr>
+            <td><%= index_for_pages index, params[:page] %></td>
+            <td><%= link_to user.username, [:admin, user] %></td>
+            <td><%= user.email %></td>
+            <td><%= user.user_division %></td>
+            <td><%= user.user_position %></td>
+            <td><%= user.user_language %></td>
+            <td class="dn-action-padding">
+              <% unless (current_user? user) || policy(current_user).destroy? %>
+                <%= link_to t(:delete), [:admin, user], method: :delete,
+                  data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @users %>
 </div>
-<%= will_paginate @users %>

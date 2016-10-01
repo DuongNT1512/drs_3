@@ -1,0 +1,14 @@
+<% provide :title, @user.username %>
+<div class="row">
+  <div class="col-md-6 well col-md-offset-2">
+    <div class="panel-body">
+      <p><%= t "user.name" %>: <%= @user.username %> </p><br/>
+      <p><%= t "user.position" %>:
+        <%= @user.position_name %></p> <br/>
+      <p><%= t "user.divition" %>:
+        <%= @user.division_name %></p> <br/>
+      <p><%= t "user.language" %>:
+        <%= @user.language_name %></p> <br/>
+    </div>
+  </div>
+</div>

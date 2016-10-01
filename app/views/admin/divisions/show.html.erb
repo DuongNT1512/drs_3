@@ -28,7 +28,9 @@
       <%end%>
     </tbody>
   </table>
-  <%= will_paginate @users %>
+  <%= link_to t("division.edit"), edit_admin_division_path(@division),
+    class: "btn btn-primary" %>
   <%= link_to t("division.delete"), [:admin, @division], method: :delete,
     data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
+  <%= will_paginate @users %>
 </div>

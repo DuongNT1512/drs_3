@@ -1,0 +1,5 @@
+<span>"><%= position.name %></span>
+<%= form_for [:admin, position] do |f| %>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.submit t(:update), class: "btn btn-success" %>
+<% end %>
