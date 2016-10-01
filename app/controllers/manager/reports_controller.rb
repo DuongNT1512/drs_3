@@ -6,7 +6,8 @@ class Manager::ReportsController < ApplicationController
     authorize Report
     @working_days = Report.working_days
     @progresses = Progress.all
-    @search = Report.includes(:user, :progress).search params[:q]
+    @reports = Report.all_division current_user.division_id
+    @search = @reports.includes(:user, :progress).search params[:q]
     @reports = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
   end

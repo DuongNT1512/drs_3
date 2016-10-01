@@ -26,12 +26,5 @@
       </div>
     <% end %>
     <%= link_to t(:sign_up), new_user_registration_path %>
-   <div class="col-md-offset-5">
-    <b><%= t "warning.omniauth_sign_in" %></b>
-    <%= link_to image_tag("facebook_64.png"),
-      user_facebook_omniauth_authorize_path, class: "img-rounded" %>
-    <%= link_to image_tag("google_64.png"),
-      user_google_oauth2_omniauth_authorize_path, class: "img-rounded" %>
-    </div>
   </div>
 </div>
