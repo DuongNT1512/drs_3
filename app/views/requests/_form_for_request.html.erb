@@ -3,7 +3,6 @@
     <%= form_for @request do |f| %>
 
       <%= render "shared/error_messages", object: @request %>
-      <% binding.pry %>
       <div class="form-group">
         <%= f.label :request_kind %>
         <%= f.select :request_kind, options_for_select(@request_kinds, @request.request_kind),
