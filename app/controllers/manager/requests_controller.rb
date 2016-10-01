@@ -7,7 +7,7 @@ class Manager::RequestsController < ApplicationController
     @request_kinds = Request.request_kinds
     @search = Request.includes(:user).search params[:q]
     @requests = @search.result.paginate page: params[:page], per_page: Settings.page
-    authorize User
+    authorize current_user
   end
 
   def update

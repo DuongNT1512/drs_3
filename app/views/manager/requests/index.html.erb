@@ -35,7 +35,7 @@
             <td><%= request.request_kind %></td>
             <td><%= request.reason %></td>
             <td>
-              <%if request.init? %>
+              <%if request.init? && current_user.request? %>
                 <span>
                   <%= link_to t("request.approve"),
                     manager_request_path(request,

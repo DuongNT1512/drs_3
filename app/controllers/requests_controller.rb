@@ -29,7 +29,7 @@ class RequestsController < ApplicationController
   end
 
   def edit
-    authorize current_user
+    authorize User
     authorize @request
   end
 

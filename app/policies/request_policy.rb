@@ -18,6 +18,10 @@ class RequestPolicy < ApplicationPolicy
     update?
   end
 
+  def show?
+    @user.present?
+  end
+
   def index?
     @user.manager? || user_is_owner_of_record?
   end
