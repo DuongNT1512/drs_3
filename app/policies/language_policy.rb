@@ -1,4 +1,4 @@
-class languagePolicy < ApplicationPolicy
+class LanguagePolicy < ApplicationPolicy
   attr_reader :user, :language
 
   def initialize current_user, language
