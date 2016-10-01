@@ -1,4 +1,4 @@
-class Admin::languagesController < ApplicationController
+class Admin::LanguagesController < ApplicationController
   before_action :find_language, except: [:index, :new]
   before_action :verify_admin
   after_action :verify_authorized
