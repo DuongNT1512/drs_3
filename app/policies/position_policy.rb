@@ -1,4 +1,4 @@
-class positionPolicy < ApplicationPolicy
+class PositionPolicy < ApplicationPolicy
   attr_reader :user, :position
 
   def initialize current_user, position
