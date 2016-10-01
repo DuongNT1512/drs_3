@@ -20,6 +20,7 @@ class RequestsController < ApplicationController
       flash[:danger] = t "request.create_fail"
       render :new
     end
+    authorize @request
   end
 
   def index

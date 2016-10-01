@@ -38,6 +38,10 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    @user.employee?
+  end
+
   private
   def user_is_owner_of_record?
     @user == @request.user

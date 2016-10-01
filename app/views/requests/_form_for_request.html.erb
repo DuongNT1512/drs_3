@@ -3,7 +3,7 @@
     <%= form_for @request do |f| %>
 
       <%= render "shared/error_messages", object: @request %>
-
+      <% binding.pry %>
       <div class="form-group">
         <%= f.label :request_kind %>
         <%= f.select :request_kind, options_for_select(@request_kinds, @request.request_kind),
@@ -12,7 +12,7 @@
 
       <div class="form-group">
         <%= f.label :date_leave_from %>
-        <%= f.text_field :date_leave_from, class: "form-control datepicker" %>
+        <%= f.datetime_field :date_leave_from, class: "form-control" %>
       </div>
 
       <div class="form-group">

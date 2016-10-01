@@ -34,7 +34,7 @@ class UserPolicy < ApplicationPolicy
       [:role, :position_id]
     elsif @user.manager?
       [:division_id, :language_id]
-    elsif current_user? user
+    elsif @user.employee?
       [:username, :password]
     end
   end

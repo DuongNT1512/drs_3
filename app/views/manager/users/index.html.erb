@@ -15,7 +15,7 @@
       <% @users.each.with_index do |user, index| %>
         <tr>
           <td><%= index_for_pages index, params[:page] %>
-          <td><%= link_to user.username, [:admin, user] %></td>
+          <td><%= link_to user.username, [:manager, user] %></td>
           <td><%= user.email %></td>
           <td><%= user.user_division %></td>
           <td><%= user.user_position %></td>
@@ -32,5 +32,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @users %>
 </div>
-<%= will_paginate @users %>

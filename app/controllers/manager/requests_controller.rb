@@ -5,7 +5,8 @@ class Manager::RequestsController < ApplicationController
 
   def index
     @request_kinds = Request.request_kinds
-    @search = Request.includes(:user).search params[:q]
+    @requests = Request.all_division current_user.division_id
+    @search = @requests.includes(:user).search params[:q]
     @requests = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize current_user
   end

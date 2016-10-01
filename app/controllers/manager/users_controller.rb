@@ -7,15 +7,15 @@ class Manager::UsersController < ApplicationController
     load_data
     @search = User.search params[:q]
     @users = @search.result.includes(:division, :position, :language).paginate page: params[:page], per_page: Settings.page
-    authorize User
+    authorize current_user
   end
 
   def show
-    authorize @user
+    authorize current_user
   end
 
   def edit
-    authorize @user
+    authorize current_user
     load_data
   end
 

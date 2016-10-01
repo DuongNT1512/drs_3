@@ -21,21 +21,23 @@
         </th>
         <th><%= sort_link @search, :request_kind, t("report.request_kind") %></th>
         <th><%= sort_link @search, :reason, t("report.reason") %></th>
+        <th><%= sort_link @search, :approved, t("report.approved") %></th>
       </thead>
 
       <tbody>
         <% @requests.each.with_index do |request, index| %>
           <tr>
             <td><%= index_for_pages index, params[:page] %>
-            <td><%= link_to request.user.username %></td>
+            <td><%= link_to request.user.username, manager_user_path(request.user) %></td>
             <td><%= request.date_leave_from %></td>
             <td><%= request.date_leave_to %></td>
             <td><%= request.compensation_time_from %></td>
             <td><%= request.compensation_time_to %></td>
             <td><%= request.request_kind %></td>
             <td><%= request.reason %></td>
+            <td><%= request.approved %></td>
             <td>
-              <%if request.init? && current_user.request? %>
+              <%if request.init? %>
                 <span>
                   <%= link_to t("request.approve"),
                     manager_request_path(request,
