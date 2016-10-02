@@ -1,1 +1,21 @@
-<div>Nu Quai ha thanh</div>
+<h1><%= t "mailer.requests.title" %></h1>
+<table class="table">
+  <thead>
+    <th><%= t "user.name" %></th>
+    <th><%= t "user.position" %></th>
+    <th><%= t "user.division" %></th>
+    <th><%= t "user.language" %></th>
+    <th><%= t "user.reports_count" %></th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.position_name %></td>
+        <td><%= user.division_name %></td>
+        <td><%= user.language_name %></td>
+        <td><%= user.reports.size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+ +</table>

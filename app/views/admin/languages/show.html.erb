@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% @users.each.with_index do |user, index| %>
-      <tr>
+        <tr>
           <td><%= index_for_pages index, params[:page] %></td>
           <td><%= link_to user.username, [:admin, user] %></td>
           <td><%= user.email %></td>

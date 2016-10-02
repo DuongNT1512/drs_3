@@ -102,6 +102,11 @@ en:
     position: "Position"
     language: "Language"
     save_change: "Save change"
+    reports_count: "The number of reports"
+    reports_count: "Reports"
+    request_count: "Requests"
+    edit_user: "Edit profile"
+    save_change: "Save change"
 
   notification:
     not_admin: "You are not authorized to perform this action."
@@ -151,3 +156,14 @@ en:
     progress: "Select Progress"
     not_request: "Can't find request"
     not_report: "Can't find report"
+  mailer:
+    reports:
+      subject: "Daily Reports of users"
+      title: "Reports of user's report"
+    select_request_type: "Select request type"
+    requests:
+      subject: "Reports of user's request"
+      title: "Users have requests more than 5"
+    least_report:
+      subject: "Reports of user have least reports"
+      title: "Reports of user have least reports"

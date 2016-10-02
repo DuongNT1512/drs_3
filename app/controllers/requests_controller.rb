@@ -39,11 +39,12 @@ class RequestsController < ApplicationController
     authorize @request
     if @request.update_attributes request_params
       flash.now[:success] = t "request.update_success"
+      redirect_to requests_path
     else
       load_request_kind
       flash[:danger] = t "request.update_fail"
+      render :edit
     end
-    redirect_to requests_path
   end
 
   def destroy

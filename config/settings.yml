@@ -8,3 +8,5 @@ namemodel:
   - Division
   - Progress
   - Language
+least_requests: 5
+least_reports: 5

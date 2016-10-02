@@ -1,0 +1,9 @@
+<%= t "mailer.least_reports.title" %>
+
+<%= "#{t("user.uid")} | #{t("user.name")} | #{t(user.position)} |
+  #{t("user.division")} | #{t("user.skill")} | #{t(user.reports_count)}" %>
+<% @users.each do |user| %>
+  <%= "#{user.profile.uid} | #{user.profile.name} | #{user.profile.position.name}
+    #{user.profile.division.name} | #{user.profile.skill.name} |
+    #{user.reports.size}" %>
+<% end %>
