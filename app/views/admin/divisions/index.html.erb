@@ -7,6 +7,7 @@
       <thead>
         <th></th>
         <th><%= sort_link @search, :name, t("user.name") %></th>
+        <th><%= t("division.manager") %></th>
       </thead>
       <tbody>
         <% @divisions.each.with_index do |division, index| %>
@@ -14,6 +15,14 @@
             <td><%= index_for_pages index, params[:page] %>
             </td>
             <td><%= link_to division.name, admin_division_path(division) %></td>
+            <td>
+              <% if division.users.manager.any? %>
+                <%= link_to division.users.manager.first.username.capitalize,
+                  admin_user_path(division.users.manager.first) %>
+              <% else %>
+                <%= t "don't have any manager" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

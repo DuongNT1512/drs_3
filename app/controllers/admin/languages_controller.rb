@@ -1,10 +1,10 @@
 class Admin::LanguagesController < ApplicationController
-  before_action :find_language, except: [:index, :new]
+  before_action :find_language, except: [:index, :new, :create]
   before_action :verify_admin
   after_action :verify_authorized
 
   def index
-    @search = language.search params[:q]
+    @search = Language.search params[:q]
     @languages = @search.result.paginate page: params[:page], per_page: Settings.page
     authorize User
   end
@@ -12,12 +12,11 @@ class Admin::LanguagesController < ApplicationController
   def new
     authorize User
     authorize Language
-    @language = language.new
+    @language = Language.new
   end
 
   def create
-    authorize current_user
-    @language = language.new language_params
+    @language = Language.new language_params
     if @language.save
       flash[:success] = t "success"
       redirect_to admin_languages_path
@@ -25,7 +24,7 @@ class Admin::LanguagesController < ApplicationController
       flash[:danger] = t "fail"
       render :new
     end
-    authorize @language
+    authorize Language
   end
 
   def edit
@@ -40,6 +39,17 @@ class Admin::LanguagesController < ApplicationController
     @managers = User.all_manager
   end
 
+  def destroy
+    authorize current_user
+    authorize Language
+    if @language.destroy
+      flash[:success] = t "request.delete"
+    else
+      flash[:danger] = t "request.delete_fail"
+    end
+    redirect_to admin_languages_path
+  end
+
   def update
     authorize current_user
     authorize @language
@@ -52,8 +62,7 @@ class Admin::LanguagesController < ApplicationController
   end
 
   def destroy
-    authorize @user
-    authorize @language
+    authorize Language
     if @language.destroy
       flash[:success] = t "request.delete"
     else
@@ -68,7 +77,7 @@ class Admin::LanguagesController < ApplicationController
   end
 
   def find_language
-    @language = language.find_by id: params[:id]
+    @language = Language.find_by id: params[:id]
     if @language.nil?
       flash[:danger] = t "language.empty"
       redirect_to admin_languages_path

@@ -1,0 +1,8 @@
+<%= form_for [:admin, @language] do |f| %>
+  <%= render "shared/error_messages", object: @language %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <%= f.submit t("language.add"), class: "btn btn-success"%>
+<% end %>

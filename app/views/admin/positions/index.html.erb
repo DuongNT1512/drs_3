@@ -1,5 +1,7 @@
 <div class="td-index">
   <h1 class="text-center"><%= t "position.all_position" %></h1>
+  <%= render "shared/search_position_form_for" %>
+  <%= link_to t("position.add"), new_admin_position_path, class: "btn btn-primary" %>
   <div>
     <table class="table table-hover table-striped td-table">
       <thead>

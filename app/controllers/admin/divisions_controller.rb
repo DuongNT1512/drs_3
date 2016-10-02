@@ -52,8 +52,7 @@ class Admin::DivisionsController < ApplicationController
   end
 
   def destroy
-    authorize current_user
-    authorize @division
+    authorize Division
     if @division.destroy
       flash[:success] = t "request.delete"
     else

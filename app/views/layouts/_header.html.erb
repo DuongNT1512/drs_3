@@ -13,9 +13,9 @@
               </span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to t("header.profile"), users_path %></li>
               <li>
-                <%= link_to t("header.setting"),"#" %>
+              <li><%= link_to t("header.profile"), users_path %></li>
+                <%= link_to t("header.setting"), edit_user_registration_path %>
               </li>
               <li><%= link_to t("header.users"), users_path %></li>
               <li class="divider"></li>

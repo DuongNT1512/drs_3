@@ -8,6 +8,9 @@ en:
   manager: "Manager"
   search: "Search"
   new: "New"
+  success: "Success"
+  fail: "Fail"
+  don't_have_manager: "don't have manager"
   home:
     signup: "Sign up Now"
     init: "Static pages home"
@@ -117,7 +120,8 @@ en:
     delete_fail: "Delete fail"
     edit: "Edit Division"
     update: "Update"
-    add: "New"
+    add: "New division"
+    manager: "Manager"
 
   language:
     name: "Language name"
@@ -127,6 +131,7 @@ en:
     delete_fail: "Delete fail"
     edit: "Edit Language"
     update: "Update"
+    add: "New language"
 
   position:
     name: "Position name"
@@ -136,6 +141,7 @@ en:
     delete_fail: "Delete fail"
     edit: "Edit Position"
     update: "Update"
+    add: "New position"
 
   select:
     position: "Select posision"

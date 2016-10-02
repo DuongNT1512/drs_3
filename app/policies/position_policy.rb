@@ -11,7 +11,7 @@ class PositionPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    @user.admin?
   end
 
   def index?
@@ -23,6 +23,10 @@ class PositionPolicy < ApplicationPolicy
   end
 
   def destroy?
+    @user.admin?
+  end
+
+  def edit?
     @user.admin?
   end
 end

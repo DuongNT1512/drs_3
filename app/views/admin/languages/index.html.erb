@@ -2,6 +2,7 @@
   <h1 class="text-center"><%= t "language.all_language" %></h1>
   <div>
     <%= render "shared/search_language_form_for" %>
+    <%= link_to t("language.add"), new_admin_language_path, class: "btn btn-primary" %>
     <table class="table table-hover table-striped td-table">
       <thead>
         <th></th>
