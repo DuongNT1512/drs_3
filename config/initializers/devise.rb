@@ -248,9 +248,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, "APP_ID", "APP_SECRET", scope: "user,public_repo"
+  config.omniauth :facebook, "301860090196522", "c4fa487595ab32f03c8674b3f7d21542"
 
-  config.omniauth :facebook, Rails.application.secrets.facebook_id,
-    Rails.application.secrets.facebook_secret
   config.omniauth :google_oauth2, Rails.application.secrets.google_id,
     Rails.application.secrets.google_secret
 

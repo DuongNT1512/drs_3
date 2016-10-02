@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
 
-  devise_for :users
+  devise_for :users,
+    controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :requests, except: :show
   resources :reports
   resources :users
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     resources :positions
     resources :divisions
     resources :languages
+    mount Sidekiq::Web, at: "/sidekiq"
   end
 
   namespace :manager do
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create]
     resources :requests, except: [:new, :create]
     resources :reports, only: :index
+    mount Sidekiq::Web, at: "/sidekiq"
   end
 
   root "requests#index"

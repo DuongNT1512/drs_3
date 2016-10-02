@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
-  def create
+  skip_before_action :verify_authenticity_token
+   def create
     @user = User.from_omniauth request.env["omniauth.auth"]
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
@@ -18,8 +18,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def show
     redirect_to root_path
   end
-
-  alias_method :facebook, :create
-  alias_method :google_oauth2, :create
-  alias_method :failure, :show
 end

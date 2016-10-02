@@ -1,5 +1,5 @@
 class Admin::DivisionsController < ApplicationController
-  before_action :find_division, except: [:index, :new]
+  before_action :find_division, except: [:index, :new, :create]
   before_action :verify_admin
   after_action :verify_authorized
 
@@ -17,7 +17,6 @@ class Admin::DivisionsController < ApplicationController
   end
 
   def create
-    authorize current_user
     @division = Division.new division_params
     if @division.save
       flash[:success] = t "success"

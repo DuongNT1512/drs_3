@@ -2,6 +2,7 @@
   <h1 class="text-center"><%= t "division.all_division" %></h1>
   <div>
     <%= render "shared/search_division_form_for" %>
+    <%= link_to t("division.add"), new_admin_division_path, class: "btn btn-primary" %>
     <table class="table table-hover table-striped td-table">
       <thead>
         <th></th>

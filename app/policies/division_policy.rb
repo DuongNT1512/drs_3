@@ -11,7 +11,7 @@ class DivisionPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    @user.admin?
   end
 
   def index?

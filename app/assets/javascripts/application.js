@@ -19,7 +19,7 @@
 //= require_tree .
 $(document).on('turbolinks:load', function(){
   $('.datepicker').datetimepicker({
-    format: 'MM / DD / YYYY h:m '
+    format: 'DD / MM / YYYY h:m '
   }).datetimepicker("setDate", new Date());
 });
 
