@@ -40,7 +40,13 @@ manager = User.create username: "manager",
   division_id: "2",
   position_id: "1",
   role: 1
-
+40.times do |n|
+  name  = Faker::Name.name
+  email = "myuser-#{n+1}@gmail.com"
+  password = "123456"
+  User.create! name: name, email: email, password: password,
+    password_confirmation: password
+end
 Request.create! user_id: "2",
   request_kind: "in_late",
   reason: "Busy",

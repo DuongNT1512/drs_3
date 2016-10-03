@@ -24,6 +24,7 @@ gem "omniauth-facebook", "~> 4.0"
 gem "sidekiq"
 gem "sinatra", require: false
 gem "whenever", require: false
+gem "faker", "~> 1.6", ">= 1.6.3"
 
 group :development, :test do
   gem "mysql2"

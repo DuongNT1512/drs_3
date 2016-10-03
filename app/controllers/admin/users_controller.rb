@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    authorize @user
+    authorize User
     if @user.destroy
       flash[:success] = t "notification.destroy_success"
     else
